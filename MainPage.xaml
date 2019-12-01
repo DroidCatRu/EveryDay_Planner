@@ -1,0 +1,90 @@
+﻿<Page
+    x:Class="EveryDay.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EveryDay"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Border x:Name="AppTitleBar"
+                Grid.Column="1"
+                IsHitTestVisible="True"
+                VerticalAlignment="Top"
+                Background="Transparent"
+                Height="40"
+                Margin="40,0,0,0"
+                Canvas.ZIndex="1">
+            <TextBlock x:Name="AppTitle"
+                       Text="EveryDay"
+                       VerticalAlignment="Center"
+                       Margin="8,0,0,0"
+                       Style="{StaticResource CaptionTextBlockStyle}" />
+        </Border>
+
+        <muxc:NavigationView x:Name="NavView"
+                             Canvas.ZIndex="0"
+                             IsTitleBarAutoPaddingEnabled="False"
+                             PaneDisplayMode="LeftCompact"
+                             Loaded="NavView_Loaded"
+                             IsBackButtonVisible="Collapsed"
+                             SelectionChanged="NavView_ItemInvoked">
+
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Tag="inbox" x:Uid="Inbox_Title" Content="">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7B8;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Tag="today" Icon="Calendar" x:Uid="Today_Title" Content=""/>
+
+                <muxc:NavigationViewItem Tag="week" Icon="CalendarWeek" x:Uid="Week_Title" Content=""/>
+            </muxc:NavigationView.MenuItems>
+
+            <muxc:NavigationView.AutoSuggestBox>
+                <AutoSuggestBox VerticalAlignment="Center"
+                                x:FieldModifier="public"
+                                x:Uid="SearchBox"
+                                QueryIcon="Find"/>
+            </muxc:NavigationView.AutoSuggestBox>
+            
+            <Frame x:Name="ContentFrame"
+                   IsTabStop="True"
+                   RelativePanel.AlignLeftWithPanel="True"
+                   RelativePanel.AlignRightWithPanel="True"
+                   RelativePanel.AlignTopWithPanel="True"
+                   Margin="0,64,0,0">
+
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <DrillInNavigationTransitionInfo/>
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+
+            </Frame>
+
+        </muxc:NavigationView>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth="750"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="NavView.PaneDisplayMode" Value="Left"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
