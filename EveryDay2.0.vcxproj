@@ -176,6 +176,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="Helpers\Calendar.h" />
     <ClInclude Include="Helpers\InboxEvent.h" />
     <ClInclude Include="Helpers\PlannedEvent.h" />
@@ -186,12 +187,19 @@
     <ClInclude Include="MainPage.xaml.h">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="ViewModels\InboxPageModel.h" />
+    <ClInclude Include="Views\InboxPage.xaml.h">
+      <DependentUpon>Views\InboxPage.xaml</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\InboxPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -228,6 +236,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="ViewModels\InboxPageModel.cpp" />
+    <ClCompile Include="Views\InboxPage.xaml.cpp">
+      <DependentUpon>Views\InboxPage.xaml</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

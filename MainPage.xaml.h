@@ -2,11 +2,10 @@
 
 #include "MainPage.g.h"
 #include "Helpers/Calendar.h"
+#include "Views/InboxPage.xaml.h"
 
 namespace EveryDay {
-	/// <summary>
-	/// Оболочка, в которой отображаются страницы приложения и происходит навигация.
-	/// </summary>
+	
 	public ref class MainPage sealed {
 
 	public:

@@ -14,6 +14,12 @@
     <Filter Include="Helpers">
       <UniqueIdentifier>{81ad3f90-c6be-4f43-a58d-5593c2d36c37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{ecd88651-4bc1-42ee-b837-0a7950f742d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModels">
+      <UniqueIdentifier>{692005e2-3e16-454a-b054-d33782dd4270}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -29,6 +35,9 @@
     <ClCompile Include="Helpers\PlannedEvent.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="ViewModels\InboxPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -39,6 +48,12 @@
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\PlannedEvent.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\InboxPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\BindableBase.h">
       <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -70,6 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="MainPage.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)DensityStyles\Compact.xaml" />
+    <Page Include="Views\InboxPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

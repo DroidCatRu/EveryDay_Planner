@@ -50,13 +50,10 @@
                                 x:Uid="SearchBox"
                                 QueryIcon="Find"/>
             </muxc:NavigationView.AutoSuggestBox>
-            
+
+
             <Frame x:Name="ContentFrame"
-                   IsTabStop="True"
-                   RelativePanel.AlignLeftWithPanel="True"
-                   RelativePanel.AlignRightWithPanel="True"
-                   RelativePanel.AlignTopWithPanel="True"
-                   Margin="0,64,0,0">
+                   Margin="0,40,0,0">
 
                 <Frame.ContentTransitions>
                     <TransitionCollection>

@@ -58,7 +58,7 @@ void MainPage::NavView_Loaded() {
 				int dayToShow = now.tm_mday;
 				this->calendar->DateShowed = yearToShow * 10000 + monthToShow * 100 + dayToShow;
 
-				//ContentFrame->Navigate(Day::typeid, this->calendar);
+				ContentFrame->Navigate(InboxPage::typeid, this->calendar);
 				NavView->SelectedItem = NavView->MenuItems->GetAt(0);
 				});
 }
