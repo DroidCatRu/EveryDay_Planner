@@ -188,6 +188,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="ViewModels\InboxPageModel.h" />
+    <ClInclude Include="Views\EditEventPage.xaml.h">
+      <DependentUpon>Views\EditEventPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Views\InboxPage.xaml.h">
       <DependentUpon>Views\InboxPage.xaml</DependentUpon>
     </ClInclude>
@@ -197,6 +200,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EditEventPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\InboxPage.xaml">
@@ -238,6 +244,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ViewModels\InboxPageModel.cpp" />
+    <ClCompile Include="Views\EditEventPage.xaml.cpp">
+      <DependentUpon>Views\EditEventPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="Views\InboxPage.xaml.cpp">
       <DependentUpon>Views\InboxPage.xaml</DependentUpon>
     </ClCompile>
@@ -249,6 +258,20 @@
   <ItemGroup>
     <PRIResource Include="Strings\Resources.language-en.resw" />
     <PRIResource Include="Strings\Resources.language-ru.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Roboto-Black.ttf" />
+    <Font Include="Assets\Roboto-BlackItalic.ttf" />
+    <Font Include="Assets\Roboto-Bold.ttf" />
+    <Font Include="Assets\Roboto-BoldItalic.ttf" />
+    <Font Include="Assets\Roboto-Italic.ttf" />
+    <Font Include="Assets\Roboto-Light.ttf" />
+    <Font Include="Assets\Roboto-LightItalic.ttf" />
+    <Font Include="Assets\Roboto-Medium.ttf" />
+    <Font Include="Assets\Roboto-MediumItalic.ttf" />
+    <Font Include="Assets\Roboto-Regular.ttf" />
+    <Font Include="Assets\Roboto-Thin.ttf" />
+    <Font Include="Assets\Roboto-ThinItalic.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

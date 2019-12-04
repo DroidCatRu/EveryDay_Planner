@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="InboxPageHeader.Text" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
   <data name="Inbox_Title.Content" xml:space="preserve">
     <value>Inbox</value>
   </data>
+  <data name="isPlannedCheckBox.Content" xml:space="preserve">
+    <value>Plan event</value>
+  </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="Titler.Header" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="Today_Title.Content" xml:space="preserve">
     <value>Today</value>

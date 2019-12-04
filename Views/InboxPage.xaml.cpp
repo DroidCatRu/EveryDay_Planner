@@ -1,5 +1,7 @@
 ﻿#include "pch.h"
 #include "InboxPage.xaml.h"
+#include "EditEventPage.xaml.h"
+#include "MainPage.xaml.h"
 
 using namespace EveryDay;
 
@@ -26,4 +28,26 @@ void InboxPage::OnNavigatedTo(NavigationEventArgs^ e) {
 	else {
 		((InboxPageModel^)DataContext)->Cal = ref new Calendar;
 	}
+}
+
+void EveryDay::InboxPage::Item_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e) {
+	FrameworkElement^ senderElement = (FrameworkElement^)sender;
+
+	FlyoutBase^ flyout = FlyoutBase::GetAttachedFlyout(senderElement);
+	flyout->ShowAt(senderElement);
+}
+
+
+void EveryDay::InboxPage::EditItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+	//TODO: edit selected event (by event's id)
+
+	Windows::UI::Xaml::Controls::Frame^ mainFrame = (Windows::UI::Xaml::Controls::Frame^) Window::Current->Content;
+	MainPage^ mainPage = (MainPage^) mainFrame->Content;
+
+	mainPage->NavigateToEdit(((InboxPageModel^)DataContext)->Cal);
+}
+
+
+void EveryDay::InboxPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+	//TODO: remove event by its id and then save events to file
 }

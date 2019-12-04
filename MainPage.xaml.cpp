@@ -2,6 +2,9 @@
 #include "MainPage.xaml.h"
 #include <ctime>
 
+#include "Views/EditEventPage.xaml.h"
+#include "Views/InboxPage.xaml.h"
+
 using namespace EveryDay;
 
 using namespace Platform;
@@ -59,36 +62,46 @@ void MainPage::NavView_Loaded() {
 				this->calendar->DateShowed = yearToShow * 10000 + monthToShow * 100 + dayToShow;
 
 				ContentFrame->Navigate(InboxPage::typeid, this->calendar);
-				NavView->SelectedItem = NavView->MenuItems->GetAt(0);
+				NavView->SelectedItem = NavView->MenuItems->GetAt(2);
 				});
 }
 
 void MainPage::NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) {
-	/*
 	if (args.IsSettingsInvoked) {
-		NavigateToSettings();
-		selectedView = "settings";
+		//NavigateToSettings();
 	}
 	else {
-		selectedView = args.InvokedItemContainer->Tag->ToString();
+		String^ selectedView = args.InvokedItemContainer->Tag->ToString();
 
-		std::time_t t = std::time(0);
-		std::tm now;
-		localtime_s(&now, &t);
-		yearToShow = now.tm_year + 1900;
-		monthToShow = now.tm_mon + 1;
-		dayToShow = now.tm_mday;
-		this->calendar->DateShowed = yearToShow * 10000 + monthToShow * 100 + dayToShow;
-
-		if (selectedView == "day") {
-			NavigateToDayPlan();
+		if (selectedView == "inbox") {
+			NavigateToInbox(this->calendar);
 		}
-		if (selectedView == "week") {
-			NavigateToThreeDayPlan();
+		else if (selectedView == "today") {
+			//NavigateToToday();
 		}
-		if (selectedView == "month") {
-			NavigateToMonthPlan();
+		else if (selectedView == "week") {
+			//NavigateToWeek();
+		}
+		else if (selectedView == "add") {
+			NavigateToEdit(this->calendar);
 		}
 	}
-	*/
+}
+
+void MainPage::NavigateToEdit(Calendar^ cal) {
+	auto name = EditEventPage::typeid->ToString();
+	auto namecontent = ContentFrame->Content->GetType()->ToString();
+	if (ContentFrame->Content->GetType()->ToString() != EditEventPage::typeid->ToString()) {
+		NavView->SelectedItem = NavView->MenuItems->GetAt(0);
+		ContentFrame->Navigate(EditEventPage::typeid, cal);
+	}
+}
+
+void MainPage::NavigateToInbox(Calendar^ cal) {
+	auto name = InboxPage::typeid->ToString();
+	auto namecontent = ContentFrame->Content->GetType()->ToString();
+	if (ContentFrame->Content->GetType()->ToString() != InboxPage::typeid->ToString()) {
+		NavView->SelectedItem = NavView->MenuItems->GetAt(2);
+		ContentFrame->Navigate(InboxPage::typeid, cal);
+	}
 }

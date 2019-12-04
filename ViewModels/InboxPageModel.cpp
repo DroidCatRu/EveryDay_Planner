@@ -48,6 +48,8 @@ Vector<InboxEvent^>^ InboxPageModel::sortById(Vector<InboxEvent^>^ eventsdata, i
 
 void InboxPageModel::Cal::set(Calendar^ Cal) {
 	this->calendar = Cal;
+	this->inboxEvents->Clear();
+
 	for (int i = 0; i < Cal->getInboxEventsSize(); i++) {
 		this->inboxEvents->Append(Cal->getInboxEventAt(i));
 	}

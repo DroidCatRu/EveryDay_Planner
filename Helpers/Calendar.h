@@ -119,5 +119,6 @@ namespace EveryDay {
 		Vector<InboxEvent^>^ inboxEvents = ref new Vector<InboxEvent^>;
 		int dateShowed = 0;
 		StorageFile^ eventsFile;
+		long long selectedEventId = 0;
 	};
 }

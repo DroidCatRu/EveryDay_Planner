@@ -9,14 +9,19 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource InboxPageModel}}">
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <TextBlock x:Uid="InboxPageHeader"
+                   Margin="0,20,0,0"
+                   FontSize="20"
+                   LineHeight="25"
+                   FontFamily="ms-appx:Assets/Roboto-Medium.ttf#Roboto"
+                   Foreground="{ThemeResource SystemBaseHighColor}"/>
 
         <ItemsControl Name="Events"
-                      RelativePanel.AlignLeftWithPanel="True"
-                      RelativePanel.AlignRightWithPanel="True"
-                      RelativePanel.AlignTopWithPanel="True"
-                      RelativePanel.AlignBottomWithPanel="True"
-                      ItemsSource="{Binding InboxEvents}">
+                      ItemsSource="{Binding InboxEvents}"
+                      Margin="0,14,0,0"
+                      HorizontalAlignment="Stretch">
 
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -32,22 +37,41 @@
             </ItemsControl.ItemsPanel>
 
             <ItemsControl.ItemTemplate>
-
                 <DataTemplate x:DataType="local:InboxEvent">
 
                     <RelativePanel HorizontalAlignment="Stretch"
-                                   Height="48">
-                        <Rectangle Fill="{ThemeResource SystemBaseLowColor}"
+                                   Height="48"
+                                   RightTapped="Item_Tapped"
+                                   Background="Transparent">
+
+                        <Rectangle Fill="{ThemeResource SystemChromeLowColor}"
                                    Height="1"
                                    RelativePanel.AlignRightWithPanel="True"
                                    RelativePanel.AlignLeftWithPanel="True"
-                                   RelativePanel.AlignTopWithPanel="True"/>
-                        <TextBlock Text="{x:Bind Title}"/>
+                                   RelativePanel.AlignBottomWithPanel="True"/>
+
+                        <CheckBox RelativePanel.AlignLeftWithPanel="True"
+                                  RelativePanel.AlignVerticalCenterWithPanel="True"/>
+
+                        <TextBlock Text="{x:Bind Title}"
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                                   Margin="32,0,0,0"
+                                   FontSize="14"
+                                   FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
+                                   Foreground="{ThemeResource SystemBaseHighColor}"/>
+
+                        <FlyoutBase.AttachedFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Name="EditItem"  Text="Edit" Click="EditItem_Click"/>
+                                <MenuFlyoutItem Name="RemoveItem" Text="Remove" Click="RemoveItem_Click"/>
+                            </MenuFlyout>
+                        </FlyoutBase.AttachedFlyout>
 
                     </RelativePanel>
 
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </RelativePanel>
+    </StackPanel>
 </Page>

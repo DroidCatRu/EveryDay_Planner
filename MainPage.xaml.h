@@ -2,7 +2,6 @@
 
 #include "MainPage.g.h"
 #include "Helpers/Calendar.h"
-#include "Views/InboxPage.xaml.h"
 
 namespace EveryDay {
 	
@@ -10,6 +9,8 @@ namespace EveryDay {
 
 	public:
 		MainPage();
+		void NavigateToEdit(Calendar^ cal);
+		void NavigateToInbox(Calendar^ cal);
 
 	private:
 		void NavView_Loaded();

@@ -33,6 +33,10 @@
                              SelectionChanged="NavView_ItemInvoked">
 
             <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Tag="add" Icon="Add" Content="Add Event"/>
+
+                <muxc:NavigationViewItemHeader Content="Разделы"/>
+
                 <muxc:NavigationViewItem Tag="inbox" x:Uid="Inbox_Title" Content="">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE7B8;"/>
@@ -51,21 +55,20 @@
                                 QueryIcon="Find"/>
             </muxc:NavigationView.AutoSuggestBox>
 
-
-            <Frame x:Name="ContentFrame"
-                   Margin="0,40,0,0">
-
-                <Frame.ContentTransitions>
-                    <TransitionCollection>
-                        <NavigationThemeTransition>
-                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
-                                <DrillInNavigationTransitionInfo/>
-                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
-                        </NavigationThemeTransition>
-                    </TransitionCollection>
-                </Frame.ContentTransitions>
-
-            </Frame>
+            <ScrollViewer Margin="0,40,0,0"
+                          Padding="16,0,16,0">
+                <Frame x:Name="ContentFrame">
+                    <Frame.ContentTransitions>
+                        <TransitionCollection>
+                            <NavigationThemeTransition>
+                                <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                    <DrillInNavigationTransitionInfo/>
+                                </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                            </NavigationThemeTransition>
+                        </TransitionCollection>
+                    </Frame.ContentTransitions>
+                </Frame>
+            </ScrollViewer>
 
         </muxc:NavigationView>
 
