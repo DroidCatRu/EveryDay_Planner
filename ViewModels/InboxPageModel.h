@@ -20,7 +20,7 @@ namespace EveryDay {
 			InboxPageModel() { this->calendar = ref new Calendar; }
 
 			property IObservableVector<InboxEvent^>^ InboxEvents {
-				IObservableVector<InboxEvent^>^ get() { return this->inboxEvents; }
+				IObservableVector<InboxEvent^>^ get() { return this->calendar->InboxEvents; }
 			}
 
 			property Calendar^ Cal {
@@ -28,11 +28,15 @@ namespace EveryDay {
 				void set(Calendar^ Cal);
 			}
 
+			property long long SelectedEventId {
+				long long get() { return this->calendar->SelectedEventId; }
+				void set(long long SelectedEventId) { this->calendar->SelectedEventId = SelectedEventId; }
+			}
+
+			void save() { this->calendar->save(); }
+
 		private:
 			Calendar^ calendar;
-			Vector<InboxEvent^>^ inboxEvents = ref new Vector<InboxEvent^>;
-
-			Vector<InboxEvent^>^ sortById(Vector<InboxEvent^>^ eventsdata, int left, int right);
 		};
 	}
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "Helpers/InboxEvent.h"
 #include "Helpers/PlannedEvent.h"
+#include "Helpers/BindableBase.h"
 
 using namespace EveryDay;
 
@@ -8,11 +9,13 @@ using namespace Platform;
 using namespace Windows::Data::Json;
 using namespace Windows::Storage;
 using namespace Platform::Collections;
+using namespace Windows::Foundation::Collections;
 using namespace concurrency;
 
 namespace EveryDay {
 
-	public ref class Calendar sealed {
+	[Windows::UI::Xaml::Data::Bindable]
+	public ref class Calendar sealed : BindableBase {
 
 	public:
 		Calendar() {}
@@ -22,6 +25,37 @@ namespace EveryDay {
 			void set(int DateShowed) { this->dateShowed = DateShowed; }
 		}
 
+		property long long SelectedEventId {
+			long long get() { return this->selectedEventId; }
+			void set(long long SelectedEventId) { this->selectedEventId = SelectedEventId; }
+		}
+
+		property IObservableVector<InboxEvent^>^ InboxEvents {
+			IObservableVector<InboxEvent^>^ get() { return this->inboxEvents; }
+
+			void set(IObservableVector<InboxEvent^>^ events) {
+				this->inboxEvents->Clear();
+
+				for (int i = 0; i < events->Size; i++) {
+					this->inboxEvents->Append(events->GetAt(i));
+				}
+				OnPropertyChanged("InboxEvents");
+			}
+		}
+
+		property IObservableVector<PlannedEvent^>^ PlannedEvents {
+			IObservableVector<PlannedEvent^>^ get() { return this->plannedEvents; }
+
+			void set(IObservableVector<PlannedEvent^>^ events) {
+				this->plannedEvents->Clear();
+
+				for (int i = 0; i < events->Size; i++) {
+					this->plannedEvents->Append(events->GetAt(i));
+				}
+				OnPropertyChanged("PlannedEvents");
+			}
+		}
+
 		void addPlannedEvent(PlannedEvent^ Event) { this->plannedEvents->Append(Event); }
 		PlannedEvent^ getPlannedEventAt(int i) { return this->plannedEvents->GetAt(i); }
 		int getPlannedEventsSize() { return this->plannedEvents->Size; }
@@ -29,6 +63,11 @@ namespace EveryDay {
 		void addInboxEvent(InboxEvent^ Event) { this->inboxEvents->Append(Event); }
 		InboxEvent^ getInboxEventAt(int i) { return this->inboxEvents->GetAt(i); }
 		int getInboxEventsSize() { return this->inboxEvents->Size; }
+
+		Object^ getEvent(long long id);
+		void setEventDone(long long id, bool done);
+		void removeEventWithId(long long id);
+		long long getNewId();
 
 		void save();
 		void setEventsFile(StorageFile^ EventsFile);
@@ -120,5 +159,7 @@ namespace EveryDay {
 		int dateShowed = 0;
 		StorageFile^ eventsFile;
 		long long selectedEventId = 0;
+
+		Vector<InboxEvent^>^ sortById(Vector<InboxEvent^>^ eventsdata, int left, int right);
 	};
 }

@@ -18,12 +18,19 @@
                    FontFamily="ms-appx:Assets/Roboto-Medium.ttf#Roboto"
                    Foreground="{ThemeResource SystemBaseHighColor}"/>
 
-        <ItemsControl Name="Events"
-                      ItemsSource="{Binding InboxEvents}"
-                      Margin="0,14,0,0"
-                      HorizontalAlignment="Stretch">
+        <ListView x:Name="Events"
+                  ItemsSource="{Binding InboxEvents, Mode=TwoWay}"
+                  Margin="0,14,0,0"
+                  HorizontalAlignment="Stretch"
+                  SelectionMode="None">
 
-            <ItemsControl.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsStackPanel>
                         <ItemsStackPanel.ChildrenTransitions>
@@ -31,12 +38,11 @@
                                 <EntranceThemeTransition IsStaggeringEnabled="True" />
                             </TransitionCollection>
                         </ItemsStackPanel.ChildrenTransitions>
-
                     </ItemsStackPanel>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+            </ListView.ItemsPanel>
 
-            <ItemsControl.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:InboxEvent">
 
                     <RelativePanel HorizontalAlignment="Stretch"
@@ -51,15 +57,29 @@
                                    RelativePanel.AlignBottomWithPanel="True"/>
 
                         <CheckBox RelativePanel.AlignLeftWithPanel="True"
-                                  RelativePanel.AlignVerticalCenterWithPanel="True"/>
+                                  RelativePanel.AlignVerticalCenterWithPanel="True"
+                                  IsChecked="{x:Bind IsDone, Mode=OneWay}"
+                                  Checked="CheckBox_Checked"
+                                  Unchecked="CheckBox_Unchecked"/>
 
-                        <TextBlock Text="{x:Bind Title}"
+                        <TextBlock Text="{x:Bind Title, Mode=OneWay}"
                                    RelativePanel.AlignLeftWithPanel="True"
                                    RelativePanel.AlignVerticalCenterWithPanel="True"
                                    Margin="32,0,0,0"
                                    FontSize="14"
                                    FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                   Foreground="{ThemeResource SystemBaseHighColor}"/>
+                                   Foreground="{ThemeResource SystemBaseHighColor}"
+                                   TextDecorations="Strikethrough"
+                                   Visibility="{x:Bind IsDone, Mode=OneWay}"/>
+
+                        <TextBlock Text="{x:Bind Title, Mode=OneWay}"
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.AlignVerticalCenterWithPanel="True"
+                                   Margin="32,0,0,0"
+                                   FontSize="14"
+                                   FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
+                                   Foreground="{ThemeResource SystemBaseHighColor}"
+                                   Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
 
                         <FlyoutBase.AttachedFlyout>
                             <MenuFlyout>
@@ -71,7 +91,7 @@
                     </RelativePanel>
 
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackPanel>
 </Page>

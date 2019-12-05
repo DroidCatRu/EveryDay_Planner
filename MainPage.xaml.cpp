@@ -73,6 +73,10 @@ void MainPage::NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvo
 	else {
 		String^ selectedView = args.InvokedItemContainer->Tag->ToString();
 
+		if (selectedView != "add") {
+			this->calendar->SelectedEventId = 0;
+		}
+
 		if (selectedView == "inbox") {
 			NavigateToInbox(this->calendar);
 		}

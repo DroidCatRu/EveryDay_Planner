@@ -22,9 +22,11 @@
                        Foreground="{ThemeResource SystemErrorTextColor}"/>
 
             <TextBox x:Uid="Titler"
+                     x:Name="Titler"
                      Width="360"/>
 
             <CheckBox x:Uid="isPlannedCheckBox"
+                      x:Name="isPlannedCheckBox"
                       Margin="0,16,0,0"
                       HorizontalAlignment="Left"
                       Checked="CheckBox_Checked"

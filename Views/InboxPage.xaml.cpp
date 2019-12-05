@@ -39,10 +39,15 @@ void EveryDay::InboxPage::Item_Tapped(Platform::Object^ sender, Windows::UI::Xam
 
 
 void EveryDay::InboxPage::EditItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
-	//TODO: edit selected event (by event's id)
+
+	FrameworkElement^ senderElement = (FrameworkElement^)sender;
+
+	if (senderElement->DataContext != nullptr) {
+		((InboxPageModel^)DataContext)->Cal->SelectedEventId = ((InboxEvent^)senderElement->DataContext)->Id;
+	}
 
 	Windows::UI::Xaml::Controls::Frame^ mainFrame = (Windows::UI::Xaml::Controls::Frame^) Window::Current->Content;
-	MainPage^ mainPage = (MainPage^) mainFrame->Content;
+	MainPage^ mainPage = (MainPage^)mainFrame->Content;
 
 	mainPage->NavigateToEdit(((InboxPageModel^)DataContext)->Cal);
 }
@@ -50,4 +55,34 @@ void EveryDay::InboxPage::EditItem_Click(Platform::Object^ sender, Windows::UI::
 
 void EveryDay::InboxPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 	//TODO: remove event by its id and then save events to file
+	FrameworkElement^ senderElement = (FrameworkElement^)sender;
+
+	if (senderElement->DataContext != nullptr) {
+		((InboxPageModel^)DataContext)->Cal->removeEventWithId(((InboxEvent^)senderElement->DataContext)->Id);
+		Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+		tmpcal->save();
+	}
+}
+
+void EveryDay::InboxPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+	FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
+	FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
+	InboxEvent^ ev = (InboxEvent^)senderItem->DataContext;
+	if (ev != nullptr) {
+		ev->IsDone = true;
+	}
+	Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+	tmpcal->save();
+}
+
+
+void EveryDay::InboxPage::CheckBox_Unchecked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+	FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
+	FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
+	InboxEvent^ ev = (InboxEvent^)senderItem->DataContext;
+	if (ev != nullptr) {
+		ev->IsDone = false;
+	}
+	Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+	tmpcal->save();
 }
