@@ -54,25 +54,25 @@ void EveryDay::InboxPage::EditItem_Click(Platform::Object^ sender, Windows::UI::
 
 
 void EveryDay::InboxPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
-	//TODO: remove event by its id and then save events to file
+	
 	FrameworkElement^ senderElement = (FrameworkElement^)sender;
 
 	if (senderElement->DataContext != nullptr) {
 		((InboxPageModel^)DataContext)->Cal->removeEventWithId(((InboxEvent^)senderElement->DataContext)->Id);
-		Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
-		tmpcal->save();
 	}
+	Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+	tmpcal->save();
 }
 
 void EveryDay::InboxPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 	FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
 	FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
 	InboxEvent^ ev = (InboxEvent^)senderItem->DataContext;
-	if (ev != nullptr) {
+	if (ev != nullptr && ev->IsDone == false && Events->IsLoaded) {
 		ev->IsDone = true;
+		Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+		tmpcal->save();
 	}
-	Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
-	tmpcal->save();
 }
 
 
@@ -80,9 +80,9 @@ void EveryDay::InboxPage::CheckBox_Unchecked(Platform::Object^ sender, Windows::
 	FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
 	FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
 	InboxEvent^ ev = (InboxEvent^)senderItem->DataContext;
-	if (ev != nullptr) {
+	if (ev != nullptr && ev->IsDone == true && Events->IsLoaded) {
 		ev->IsDone = false;
+		Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+		tmpcal->save();
 	}
-	Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
-	tmpcal->save();
 }

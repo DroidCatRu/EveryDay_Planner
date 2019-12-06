@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddEvent" xml:space="preserve">
+    <value>Добавить событие</value>
+  </data>
+  <data name="AddEventButton.Content" xml:space="preserve">
+    <value>Добавить событие</value>
+  </data>
+  <data name="Cancel.Content" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="Date.Header" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="DateNotSet" xml:space="preserve">
+    <value>Укажите дату планируемого события</value>
+  </data>
+  <data name="EditFlyout.Text" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
   <data name="InboxPageHeader.Text" xml:space="preserve">
     <value>Входящие</value>
   </data>
@@ -126,8 +144,23 @@
   <data name="isPlannedCheckBox.Content" xml:space="preserve">
     <value>Запланировать</value>
   </data>
+  <data name="RemoveFlyout.Text" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="SaveEvent" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Найти</value>
+  </data>
+  <data name="StartTime.Header" xml:space="preserve">
+    <value>Время</value>
+  </data>
+  <data name="TimeNotSet" xml:space="preserve">
+    <value>Укажите время планируемого события</value>
+  </data>
+  <data name="TitleNotSet" xml:space="preserve">
+    <value>Укажите название события</value>
   </data>
   <data name="Titler.Header" xml:space="preserve">
     <value>Название</value>

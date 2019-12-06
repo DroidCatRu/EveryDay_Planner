@@ -33,7 +33,7 @@
                              SelectionChanged="NavView_ItemInvoked">
 
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Tag="add" Icon="Add" Content="Add Event"/>
+                <muxc:NavigationViewItem Tag="add" Icon="Add" x:Uid="AddEventButton" Content="Add Event"/>
 
                 <muxc:NavigationViewItemHeader Content="Разделы"/>
 

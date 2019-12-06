@@ -13,13 +13,6 @@
 
         <StackPanel Width="auto"
                     HorizontalAlignment="Center">
-            <TextBlock x:Name="AlertMessage"
-                       LineHeight="18"
-                       FontSize="16"
-                       FontFamily="../Assets/Roboto-Light.ttf#Roboto"
-                       Width="360"
-                       Height="Auto"
-                       Foreground="{ThemeResource SystemErrorTextColor}"/>
 
             <TextBox x:Uid="Titler"
                      x:Name="Titler"
@@ -35,13 +28,15 @@
             <StackPanel Width="auto"
                         Visibility="Collapsed"
                         x:Name="DatePlan">
-                <TimePicker Header="Start time"
+                <TimePicker Header="Time"
+                            x:Uid="StartTime"
                             x:Name="Starter"
                             Width="360"
                             Margin="0,16,0,0"
                             HorizontalAlignment="Center"/>
 
                 <CalendarDatePicker Header="Date"
+                                    x:Uid="Date"
                                     x:Name="Dater"
                                     Width="360"
                                     Margin="0,16,0,0"
@@ -57,16 +52,29 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Cancel"
+                <Button x:Uid="Cancel"
+                        Content="Cancel"
                         Grid.Column="0"
                         HorizontalAlignment="Stretch"
-                        Click="CancelButton_Click"/>
+                        Click="CancelButton_Click"
+                        x:Name="CancelButton"/>
                 <Button Content="Add event"
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
-                        Click="AddButton_Click"/>
+                        Click="AddButton_Click"
+                        x:Name="AddButton"/>
             </Grid>
-            
+
+            <TextBlock x:Name="AlertMessage"
+                       HorizontalAlignment="Center"
+                       FontSize="14"
+                       FontFamily="../Assets/Roboto-Light.ttf#Roboto"
+                       Width="360"
+                       Height="Auto"
+                       Margin="0,16,0,0"
+                       TextAlignment="Center"
+                       Foreground="{ThemeResource SystemErrorTextColor}"/>
+
         </StackPanel>
     </Grid>
 </Page>
