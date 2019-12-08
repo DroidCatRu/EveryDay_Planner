@@ -1,9 +1,12 @@
 ﻿#include "pch.h"
-#include "InboxPage.xaml.h"
+#include "TodayPage.xaml.h"
 #include "EditEventPage.xaml.h"
 #include "MainPage.xaml.h"
 
+#include "ViewModels/InboxPageModel.h"
+
 using namespace EveryDay;
+using namespace EveryDay::ViewModels;
 
 using namespace Platform;
 using namespace Windows::Foundation;
@@ -17,11 +20,11 @@ using namespace Windows::UI::Xaml::Media;
 using namespace Windows::UI::Xaml::Navigation;
 
 
-InboxPage::InboxPage() {
+TodayPage::TodayPage() {
 	InitializeComponent();
 }
 
-void InboxPage::OnNavigatedTo(NavigationEventArgs^ e) {
+void TodayPage::OnNavigatedTo(NavigationEventArgs^ e) {
 	if (e->Parameter != nullptr) {
 		((InboxPageModel^)DataContext)->Cal = (Calendar^)e->Parameter;
 	}
@@ -30,15 +33,14 @@ void InboxPage::OnNavigatedTo(NavigationEventArgs^ e) {
 	}
 }
 
-void EveryDay::InboxPage::Item_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e) {
+void EveryDay::TodayPage::Item_Tapped(Platform::Object^ sender, Windows::UI::Xaml::Input::TappedRoutedEventArgs^ e) {
 	FrameworkElement^ senderElement = (FrameworkElement^)sender;
 
 	FlyoutBase^ flyout = FlyoutBase::GetAttachedFlyout(senderElement);
 	flyout->ShowAt(senderElement);
 }
 
-
-void EveryDay::InboxPage::EditItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+void EveryDay::TodayPage::EditItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 
 	FrameworkElement^ senderElement = (FrameworkElement^)sender;
 
@@ -52,8 +54,7 @@ void EveryDay::InboxPage::EditItem_Click(Platform::Object^ sender, Windows::UI::
 	mainPage->NavigateToEdit(((InboxPageModel^)DataContext)->Cal);
 }
 
-
-void EveryDay::InboxPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+void EveryDay::TodayPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 
 	FrameworkElement^ senderElement = (FrameworkElement^)sender;
 
@@ -64,7 +65,7 @@ void EveryDay::InboxPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI
 	tmpcal->save();
 }
 
-void EveryDay::InboxPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+void EveryDay::TodayPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 	if (Events->IsLoaded) {
 		FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
 		FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
@@ -77,8 +78,7 @@ void EveryDay::InboxPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI
 	}
 }
 
-
-void EveryDay::InboxPage::CheckBox_Unchecked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
+void EveryDay::TodayPage::CheckBox_Unchecked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 	if (Events->IsLoaded) {
 		FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
 		FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;

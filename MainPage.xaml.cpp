@@ -4,6 +4,7 @@
 
 #include "Views/EditEventPage.xaml.h"
 #include "Views/InboxPage.xaml.h"
+#include "Views/TodayPage.xaml.h"
 
 using namespace EveryDay;
 
@@ -81,7 +82,7 @@ void MainPage::NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvo
 			NavigateToInbox(this->calendar);
 		}
 		else if (selectedView == "today") {
-			//NavigateToToday();
+			NavigateToToday(this->calendar);
 		}
 		else if (selectedView == "week") {
 			//NavigateToWeek();
@@ -107,5 +108,14 @@ void MainPage::NavigateToInbox(Calendar^ cal) {
 	if (ContentFrame->Content->GetType()->ToString() != InboxPage::typeid->ToString()) {
 		NavView->SelectedItem = NavView->MenuItems->GetAt(2);
 		ContentFrame->Navigate(InboxPage::typeid, cal);
+	}
+}
+
+void MainPage::NavigateToToday(Calendar^ cal) {
+	auto name = TodayPage::typeid->ToString();
+	auto namecontent = ContentFrame->Content->GetType()->ToString();
+	if (ContentFrame->Content->GetType()->ToString() != TodayPage::typeid->ToString()) {
+		NavView->SelectedItem = NavView->MenuItems->GetAt(3);
+		ContentFrame->Navigate(TodayPage::typeid, cal);
 	}
 }

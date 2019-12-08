@@ -135,6 +135,9 @@
   <data name="EditFlyout.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="Inbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
   <data name="InboxPageHeader.Text" xml:space="preserve">
     <value>Inbox</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="Titler.Header" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="TodayPageHeader.Text" xml:space="preserve">
+    <value>Today</value>
   </data>
   <data name="Today_Title.Content" xml:space="preserve">
     <value>Today</value>

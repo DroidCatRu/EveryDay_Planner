@@ -1,5 +1,7 @@
 #pragma once
 
+#include <collection.h>
+
 #include "Helpers/Calendar.h"
 #include "Helpers/BindableBase.h"
 #include "Helpers/InboxEvent.h"

@@ -194,6 +194,9 @@
     <ClInclude Include="Views\InboxPage.xaml.h">
       <DependentUpon>Views\InboxPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Views\TodayPage.xaml.h">
+      <DependentUpon>Views\TodayPage.xaml</DependentUpon>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -206,6 +209,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\InboxPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TodayPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -249,6 +255,9 @@
     </ClCompile>
     <ClCompile Include="Views\InboxPage.xaml.cpp">
       <DependentUpon>Views\InboxPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Views\TodayPage.xaml.cpp">
+      <DependentUpon>Views\TodayPage.xaml</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

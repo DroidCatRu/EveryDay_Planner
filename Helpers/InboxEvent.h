@@ -35,6 +35,11 @@ namespace EveryDay {
 			bool get() { return !this->isDone; }
 		}
 
+		property Object^ Key {
+			Object^ get() { return this->key; }
+			void set(Object^ Key) { this->key = Key; }
+		}
+
 		InboxEvent();
 		InboxEvent(InboxEvent^ ev);
 		InboxEvent(Platform::String^ Title,
@@ -45,5 +50,6 @@ namespace EveryDay {
 		Platform::String^ title;
 		long long id;
 		bool isDone = false;
+		Object^ key;
 	};
 }

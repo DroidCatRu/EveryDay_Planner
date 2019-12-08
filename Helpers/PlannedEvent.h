@@ -57,6 +57,10 @@ namespace EveryDay {
 				OnPropertyChanged("Date");
 			}
 		}
+		property Object^ Key {
+			Object^ get() { return this->key; }
+			void set(Object^ Key) { this->key = Key; }
+		}
 
 		PlannedEvent();
 		PlannedEvent(InboxEvent^ ev, int Start, int Date);
@@ -73,5 +77,6 @@ namespace EveryDay {
 		int start;
 		int date;
 		Platform::String^ timeincard;
+		Object^ key;
 	};
 }

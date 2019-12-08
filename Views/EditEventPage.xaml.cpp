@@ -73,18 +73,17 @@ void EveryDay::EditEventPage::CheckBox_Checked(Platform::Object^ sender, Windows
 	DatePlan->Visibility = Windows::UI::Xaml::Visibility::Visible;
 }
 
-
 void EveryDay::EditEventPage::CheckBox_Unchecked(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 	DatePlan->Visibility = Windows::UI::Xaml::Visibility::Collapsed;
 	Starter->SelectedTime = nullptr;
 	Dater->Date = nullptr;
 }
 
-
 void EveryDay::EditEventPage::AddButton_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
 	//TODO: add event to calendar or replace existing one by id and go back to previous screen
 	Object^ newEvent;
 	bool isEventSet = false;
+	bool isPlannedEventSet = false;
 
 	AlertMessage->Text = L"";
 
@@ -147,7 +146,7 @@ void EveryDay::EditEventPage::AddButton_Click(Platform::Object^ sender, Windows:
 				this->calendar->PlannedEvents->Append((PlannedEvent^)newEvent);
 				this->calendar->save();
 				isEventSet = true;
-
+				isPlannedEventSet = true;
 			}
 		}
 
@@ -209,11 +208,77 @@ void EveryDay::EditEventPage::AddButton_Click(Platform::Object^ sender, Windows:
 					this->calendar->PlannedEvents->Append((PlannedEvent^)newEvent);
 					this->calendar->save();
 					isEventSet = true;
-
+					isPlannedEventSet = true;
 				}
 			}
 			else if (newEvent->GetType()->ToString() == PlannedEvent::typeid->ToString()) {
-				//selected event is planned event
+				
+				//selected planned event
+				
+				if (Starter->SelectedTime == nullptr && Dater->Date == nullptr) {
+					
+					//planned to inbox event
+					
+					InboxEvent^ plannedToInbox = ref new InboxEvent;
+
+					plannedToInbox->Title = Titler->Text;
+					plannedToInbox->Id = ((PlannedEvent^)newEvent)->Id;
+					plannedToInbox->IsDone = ((PlannedEvent^)newEvent)->IsDone;
+
+					this->calendar->removeEventWithId(this->calendar->SelectedEventId);
+					this->calendar->InboxEvents->Append(plannedToInbox);
+					this->calendar->save();
+					isEventSet = true;
+				}
+				else if (Starter->SelectedTime != nullptr && Dater->Date == nullptr) {
+					//only time selected
+					auto resourceLoader = Windows::ApplicationModel::Resources::ResourceLoader::GetForCurrentView();
+					AlertMessage->Text = resourceLoader->GetString("DateNotSet");
+				}
+				else if (Starter->SelectedTime == nullptr && Dater->Date != nullptr) {
+					//only date selected
+					auto resourceLoader = Windows::ApplicationModel::Resources::ResourceLoader::GetForCurrentView();
+					AlertMessage->Text = resourceLoader->GetString("TimeNotSet");
+				}
+				else if (Starter->SelectedTime != nullptr && Dater->Date != nullptr) {
+					
+					// date and time selected -> change planned event
+					
+					((PlannedEvent^)newEvent)->Title = Titler->Text;
+
+					TimeSpan start = Starter->Time;
+					int sthours = start.Duration / 36000000000;
+					int stminutes = start.Duration / 600000000 - sthours * 60;
+					int evStart = sthours * 100 + stminutes;
+
+					((PlannedEvent^)newEvent)->Start = evStart;
+
+					DateTime date = Dater->Date->Value;
+
+					std::tm now;
+					std::time_t loc = (date.UniversalTime / 10000000 - 11644473600); //selected date - (1970-1601 years in seconds)
+					localtime_s(&now, &loc);
+
+					int y = now.tm_year + 1900; //year
+					int m = now.tm_mon + 1;		//month
+					int d = now.tm_mday;		//day month
+					int evDate = y * 10000 + m * 100 + d;
+
+					((PlannedEvent^)newEvent)->Date = evDate;
+
+					int evPos = 0;
+					for (int pos = 0; pos < this->calendar->PlannedEvents->Size; pos++) {
+						if (this->calendar->PlannedEvents->GetAt(pos)->Id == this->calendar->SelectedEventId) {
+							evPos = pos;
+							break;
+						}
+					}
+
+					this->calendar->PlannedEvents->SetAt(evPos, (PlannedEvent^)newEvent);
+					this->calendar->save();
+					isEventSet = true;
+					isPlannedEventSet = true;
+				}
 				
 			}
 		}
@@ -222,8 +287,12 @@ void EveryDay::EditEventPage::AddButton_Click(Platform::Object^ sender, Windows:
 	if (isEventSet) {
 		Windows::UI::Xaml::Controls::Frame^ mainFrame = (Windows::UI::Xaml::Controls::Frame^) Window::Current->Content;
 		MainPage^ mainPage = (MainPage^)mainFrame->Content;
-
-		mainPage->NavigateToInbox(this->calendar);
+		if (isPlannedEventSet) {
+			mainPage->NavigateToToday(this->calendar);
+		}
+		else {
+			mainPage->NavigateToInbox(this->calendar);
+		}
 	}
 }
 

@@ -92,6 +92,9 @@
     <Page Include="Views\EditEventPage.xaml">
       <Filter>Views</Filter>
     </Page>
+    <Page Include="Views\TodayPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

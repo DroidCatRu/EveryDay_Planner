@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="EveryDay.InboxPage"
+    x:Class="EveryDay.TodayPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:EveryDay"
@@ -12,7 +12,7 @@
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <TextBlock x:Uid="InboxPageHeader"
+        <TextBlock x:Uid="TodayPageHeader"
                    Margin="0,20,0,0"
                    FontSize="20"
                    LineHeight="25"

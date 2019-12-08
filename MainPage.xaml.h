@@ -11,6 +11,7 @@ namespace EveryDay {
 		MainPage();
 		void NavigateToEdit(Calendar^ cal);
 		void NavigateToInbox(Calendar^ cal);
+		void NavigateToToday(Calendar^ cal);
 
 	private:
 		void NavView_Loaded();
