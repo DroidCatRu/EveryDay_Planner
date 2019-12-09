@@ -103,8 +103,6 @@ void MainPage::NavigateToEdit(Calendar^ cal) {
 }
 
 void MainPage::NavigateToInbox(Calendar^ cal) {
-	auto name = InboxPage::typeid->ToString();
-	auto namecontent = ContentFrame->Content->GetType()->ToString();
 	if (ContentFrame->Content->GetType()->ToString() != InboxPage::typeid->ToString()) {
 		NavView->SelectedItem = NavView->MenuItems->GetAt(2);
 		ContentFrame->Navigate(InboxPage::typeid, cal);
@@ -112,8 +110,6 @@ void MainPage::NavigateToInbox(Calendar^ cal) {
 }
 
 void MainPage::NavigateToToday(Calendar^ cal) {
-	auto name = TodayPage::typeid->ToString();
-	auto namecontent = ContentFrame->Content->GetType()->ToString();
 	if (ContentFrame->Content->GetType()->ToString() != TodayPage::typeid->ToString()) {
 		NavView->SelectedItem = NavView->MenuItems->GetAt(3);
 		ContentFrame->Navigate(TodayPage::typeid, cal);

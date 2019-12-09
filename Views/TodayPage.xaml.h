@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Views\TodayPage.g.h"
-#include "ViewModels/InboxPageModel.h"
+#include "ViewModels/TodayPageModel.h"
 
 namespace EveryDay {
 	/// <summary>

@@ -3,7 +3,7 @@
 #include "EditEventPage.xaml.h"
 #include "MainPage.xaml.h"
 
-#include "ViewModels/InboxPageModel.h"
+#include "ViewModels/TodayPageModel.h"
 
 using namespace EveryDay;
 using namespace EveryDay::ViewModels;
@@ -26,10 +26,10 @@ TodayPage::TodayPage() {
 
 void TodayPage::OnNavigatedTo(NavigationEventArgs^ e) {
 	if (e->Parameter != nullptr) {
-		((InboxPageModel^)DataContext)->Cal = (Calendar^)e->Parameter;
+		((TodayPageModel^)DataContext)->Cal = (Calendar^)e->Parameter;
 	}
 	else {
-		((InboxPageModel^)DataContext)->Cal = ref new Calendar;
+		((TodayPageModel^)DataContext)->Cal = ref new Calendar;
 	}
 }
 
@@ -45,13 +45,13 @@ void EveryDay::TodayPage::EditItem_Click(Platform::Object^ sender, Windows::UI::
 	FrameworkElement^ senderElement = (FrameworkElement^)sender;
 
 	if (senderElement->DataContext != nullptr) {
-		((InboxPageModel^)DataContext)->Cal->SelectedEventId = ((InboxEvent^)senderElement->DataContext)->Id;
+		((TodayPageModel^)DataContext)->Cal->SelectedEventId = ((PlannedEvent^)senderElement->DataContext)->Id;
 	}
 
 	Windows::UI::Xaml::Controls::Frame^ mainFrame = (Windows::UI::Xaml::Controls::Frame^) Window::Current->Content;
 	MainPage^ mainPage = (MainPage^)mainFrame->Content;
 
-	mainPage->NavigateToEdit(((InboxPageModel^)DataContext)->Cal);
+	mainPage->NavigateToEdit(((TodayPageModel^)DataContext)->Cal);
 }
 
 void EveryDay::TodayPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI::Xaml::RoutedEventArgs^ e) {
@@ -59,9 +59,9 @@ void EveryDay::TodayPage::RemoveItem_Click(Platform::Object^ sender, Windows::UI
 	FrameworkElement^ senderElement = (FrameworkElement^)sender;
 
 	if (senderElement->DataContext != nullptr) {
-		((InboxPageModel^)DataContext)->Cal->removeEventWithId(((InboxEvent^)senderElement->DataContext)->Id);
+		((TodayPageModel^)DataContext)->Cal->removeEventWithId(((PlannedEvent^)senderElement->DataContext)->Id);
 	}
-	Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+	Calendar^ tmpcal = ((TodayPageModel^)DataContext)->Cal;
 	tmpcal->save();
 }
 
@@ -69,10 +69,10 @@ void EveryDay::TodayPage::CheckBox_Checked(Platform::Object^ sender, Windows::UI
 	if (Events->IsLoaded) {
 		FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
 		FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
-		InboxEvent^ ev = (InboxEvent^)senderItem->DataContext;
+		PlannedEvent^ ev = (PlannedEvent^)senderItem->DataContext;
 		if (ev != nullptr && ev->IsDone == false) {
 			ev->IsDone = true;
-			Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+			Calendar^ tmpcal = ((TodayPageModel^)DataContext)->Cal;
 			tmpcal->save();
 		}
 	}
@@ -82,10 +82,10 @@ void EveryDay::TodayPage::CheckBox_Unchecked(Platform::Object^ sender, Windows::
 	if (Events->IsLoaded) {
 		FrameworkElement^ senderCheckBox = (FrameworkElement^)sender;
 		FrameworkElement^ senderItem = (FrameworkElement^)senderCheckBox->Parent;
-		InboxEvent^ ev = (InboxEvent^)senderItem->DataContext;
+		PlannedEvent^ ev = (PlannedEvent^)senderItem->DataContext;
 		if (ev != nullptr && ev->IsDone == true) {
 			ev->IsDone = false;
-			Calendar^ tmpcal = ((InboxPageModel^)DataContext)->Cal;
+			Calendar^ tmpcal = ((TodayPageModel^)DataContext)->Cal;
 			tmpcal->save();
 		}
 	}

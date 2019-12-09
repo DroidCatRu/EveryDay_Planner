@@ -27,7 +27,8 @@
                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
                   ScrollViewer.IsVerticalScrollChainingEnabled="True"
                   ScrollViewer.IsScrollInertiaEnabled="False"
-                  ScrollViewer.IsZoomInertiaEnabled="False">
+                  ScrollViewer.IsZoomInertiaEnabled="False"
+                  ScrollViewer.VerticalScrollMode="Disabled">
 
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">

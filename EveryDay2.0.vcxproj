@@ -188,6 +188,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="ViewModels\InboxPageModel.h" />
+    <ClInclude Include="ViewModels\TodayPageModel.h" />
     <ClInclude Include="Views\EditEventPage.xaml.h">
       <DependentUpon>Views\EditEventPage.xaml</DependentUpon>
     </ClInclude>
@@ -250,6 +251,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ViewModels\InboxPageModel.cpp" />
+    <ClCompile Include="ViewModels\TodayPageModel.cpp" />
     <ClCompile Include="Views\EditEventPage.xaml.cpp">
       <DependentUpon>Views\EditEventPage.xaml</DependentUpon>
     </ClCompile>

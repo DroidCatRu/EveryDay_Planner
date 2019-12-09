@@ -50,6 +50,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <localVM:InboxPageModel x:Key="InboxPageModel" />
+            <localVM:TodayPageModel x:Key="TodayPageModel" />
         </ResourceDictionary>
     </Application.Resources>
 
