@@ -51,6 +51,8 @@
 
             <localVM:InboxPageModel x:Key="InboxPageModel" />
             <localVM:TodayPageModel x:Key="TodayPageModel" />
+            <localVM:WeekPageModel x:Key="WeekPageModel" />
+            <localVM:SearchPageModel x:Key="SearchPageModel" />
         </ResourceDictionary>
     </Application.Resources>
 

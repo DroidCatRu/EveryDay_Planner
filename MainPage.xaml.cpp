@@ -5,6 +5,9 @@
 #include "Views/EditEventPage.xaml.h"
 #include "Views/InboxPage.xaml.h"
 #include "Views/TodayPage.xaml.h"
+#include "Views/WeekPage.xaml.h"
+#include "Views/SettingsPage.xaml.h"
+#include "Views/SearchResults.xaml.h"
 
 using namespace EveryDay;
 
@@ -62,14 +65,30 @@ void MainPage::NavView_Loaded() {
 				int dayToShow = now.tm_mday;
 				this->calendar->DateShowed = yearToShow * 10000 + monthToShow * 100 + dayToShow;
 
-				ContentFrame->Navigate(InboxPage::typeid, this->calendar);
-				NavView->SelectedItem = NavView->MenuItems->GetAt(2);
+				switch (this->calendar->DefaultPage) {
+				case 0:
+					ContentFrame->Navigate(InboxPage::typeid, this->calendar);
+					NavView->SelectedItem = NavView->MenuItems->GetAt(2);
+					break;
+				case 1:
+					ContentFrame->Navigate(TodayPage::typeid, this->calendar);
+					NavView->SelectedItem = NavView->MenuItems->GetAt(3);
+					break;
+				case 2:
+					ContentFrame->Navigate(WeekPage::typeid, this->calendar);
+					NavView->SelectedItem = NavView->MenuItems->GetAt(4);
+					break;
+				default:
+					ContentFrame->Navigate(InboxPage::typeid, this->calendar);
+					NavView->SelectedItem = NavView->MenuItems->GetAt(2);
+					break;
+				}
 				});
 }
 
-void MainPage::NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args) {
+void MainPage::NavView_ItemInvoked(Microsoft::UI::Xaml::Controls::NavigationView sender, Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs args) {
 	if (args.IsSettingsInvoked) {
-		//NavigateToSettings();
+		NavigateToSettings(this->calendar);
 	}
 	else {
 		String^ selectedView = args.InvokedItemContainer->Tag->ToString();
@@ -85,7 +104,7 @@ void MainPage::NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvo
 			NavigateToToday(this->calendar);
 		}
 		else if (selectedView == "week") {
-			//NavigateToWeek();
+			NavigateToWeek(this->calendar);
 		}
 		else if (selectedView == "add") {
 			NavigateToEdit(this->calendar);
@@ -94,8 +113,7 @@ void MainPage::NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvo
 }
 
 void MainPage::NavigateToEdit(Calendar^ cal) {
-	auto name = EditEventPage::typeid->ToString();
-	auto namecontent = ContentFrame->Content->GetType()->ToString();
+	this->calendar = cal;
 	if (ContentFrame->Content->GetType()->ToString() != EditEventPage::typeid->ToString()) {
 		NavView->SelectedItem = NavView->MenuItems->GetAt(0);
 		ContentFrame->Navigate(EditEventPage::typeid, cal);
@@ -103,6 +121,7 @@ void MainPage::NavigateToEdit(Calendar^ cal) {
 }
 
 void MainPage::NavigateToInbox(Calendar^ cal) {
+	this->calendar = cal;
 	if (ContentFrame->Content->GetType()->ToString() != InboxPage::typeid->ToString()) {
 		NavView->SelectedItem = NavView->MenuItems->GetAt(2);
 		ContentFrame->Navigate(InboxPage::typeid, cal);
@@ -110,8 +129,54 @@ void MainPage::NavigateToInbox(Calendar^ cal) {
 }
 
 void MainPage::NavigateToToday(Calendar^ cal) {
+	this->calendar = cal;
 	if (ContentFrame->Content->GetType()->ToString() != TodayPage::typeid->ToString()) {
 		NavView->SelectedItem = NavView->MenuItems->GetAt(3);
 		ContentFrame->Navigate(TodayPage::typeid, cal);
+	}
+}
+
+void MainPage::NavigateToWeek(Calendar^ cal) {
+	this->calendar = cal;
+	if (ContentFrame->Content->GetType()->ToString() != WeekPage::typeid->ToString()) {
+		NavView->SelectedItem = NavView->MenuItems->GetAt(4);
+		ContentFrame->Navigate(WeekPage::typeid, cal);
+	}
+}
+
+void MainPage::NavigateToSettings(Calendar^ cal) {
+	this->calendar = cal;
+	if (ContentFrame->Content->GetType()->ToString() != SettingsPage::typeid->ToString()) {
+		ContentFrame->Navigate(SettingsPage::typeid, cal);
+	}
+}
+
+void MainPage::NavigateToSearch(Calendar^ cal) {
+	this->calendar = cal;
+	ContentFrame->Navigate(SearchResults::typeid, cal);
+}
+
+void MainPage::NavigateToDefault(Calendar^ cal) {
+	this->calendar = cal;
+	switch (this->calendar->DefaultPage) {
+	case 0:
+		NavigateToInbox(this->calendar);
+		break;
+	case 1:
+		NavigateToToday(this->calendar);
+		break;
+	case 2:
+		NavigateToWeek(this->calendar);
+		break;
+	default:
+		NavigateToInbox(this->calendar);
+		break;
+	}
+}
+
+void EveryDay::MainPage::AutoSuggestBox_QuerySubmitted(Windows::UI::Xaml::Controls::AutoSuggestBox^ sender, Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs^ args) {
+	if (this->calendar->SearchPhrase != args->QueryText) {
+		this->calendar->SearchPhrase = args->QueryText;
+		NavigateToSearch(this->calendar);
 	}
 }

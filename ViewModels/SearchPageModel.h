@@ -1,10 +1,10 @@
 #pragma once
 
 #include <collection.h>
-#include <ctime>
 
 #include "Helpers/Calendar.h"
 #include "Helpers/BindableBase.h"
+#include "Helpers/InboxEvent.h"
 #include "Helpers/PlannedEvent.h"
 
 using namespace EveryDay;
@@ -17,16 +17,16 @@ namespace EveryDay {
 	namespace ViewModels {
 
 		[Windows::UI::Xaml::Data::Bindable]
-		public ref class TodayPageModel sealed : BindableBase {
+		public ref class SearchPageModel sealed : BindableBase {
 
 		public:
-			TodayPageModel() { this->calendar = ref new Calendar; }
+			SearchPageModel() { this->calendar = ref new Calendar; }
 
-			property IObservableVector<PlannedEvent^>^ TodayEvents {
-				IObservableVector<PlannedEvent^>^ get();
+			property IObservableVector<InboxEvent^>^ InboxEvents {
+				IObservableVector<InboxEvent^>^ get();
 			}
 
-			property IObservableVector<PlannedEvent^>^ OverdueEvents {
+			property IObservableVector<PlannedEvent^>^ PlannedEvents {
 				IObservableVector<PlannedEvent^>^ get();
 			}
 
@@ -40,25 +40,10 @@ namespace EveryDay {
 				void set(long long SelectedEventId) { this->calendar->SelectedEventId = SelectedEventId; }
 			}
 
-			property String^ TodayString {
-				String^ get() {
-					std::time_t t = std::time(0);
-					std::tm now;
-					localtime_s(&now, &t);
-					return now.tm_mday + L" " + this->calendar->getMonthName(12);
-				}
-			}
-
-			property bool HasOverdue {
-				bool get() { return this->hasOverdue; }
-			}
-
 			void save() { this->calendar->save(); }
 
 		private:
 			Calendar^ calendar;
-			Vector<PlannedEvent^>^ sortByTime(Vector<PlannedEvent^>^ events, int left, int right);
-			bool hasOverdue = false;
 		};
 	}
 }

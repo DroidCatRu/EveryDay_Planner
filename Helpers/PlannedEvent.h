@@ -15,6 +15,7 @@ namespace EveryDay {
 				OnPropertyChanged("Title");
 			}
 		}
+		
 		property long long Id {
 			long long get() {
 				return this->id;
@@ -23,6 +24,7 @@ namespace EveryDay {
 				this->id = Id;
 			}
 		}
+		
 		property bool IsDone {
 			bool get() { return this->isDone; }
 			void set(bool IsDone) {
@@ -31,35 +33,49 @@ namespace EveryDay {
 				OnPropertyChanged("IsDone");
 			}
 		}
+		
 		property bool IsVisible {
 			bool get() { return !this->isDone; }
 		}
-		property Platform::String^ TimeInCard {
-			Platform::String^ get() { return this->timeincard; }
-			void set(Platform::String^ TimeInCard) {
-				this->timeincard = TimeInCard;
-				OnPropertyChanged("TimeInCard");
+		
+		property Platform::String^ TimeToShow {
+			Platform::String^ get() {
+				String^ h = (this->start / 100).ToString();
+				String^ m;
+				if (this->start % 100 < 10) {
+					m = L"0" + (this->start % 100).ToString();
+				}
+				else {
+					m = (this->start % 100).ToString();
+				}
+				return h + L":" + m;
 			}
 		}
+		
+		property Platform::String^ DateToShow {
+			Platform::String^ get() {
+				String^ d = (this->date % 100).ToString();
+				String^ m = ((this->date % 10000 - this->date % 100) / 100).ToString();
+				String^ y = ((this->date - this->date % 10000) / 10000).ToString();
+				return d + L"." + m + L"." + y;
+			}
+		}
+
 		property int Start {
 			int get() { return this->start; }
 			void set(int Start) {
 				this->start = Start;
-				this->TimeInCard = (this->start / 100).ToString() + L":" + (this->start % 100).ToString();
-				OnPropertyChanged("TimeInCard");
+				OnPropertyChanged("TimeToShow");
 				OnPropertyChanged("Start");
 			}
 		}
+		
 		property int Date {
 			int get() { return this->date; }
 			void set(int Date) {
 				this->date = Date;
 				OnPropertyChanged("Date");
 			}
-		}
-		property Object^ Key {
-			Object^ get() { return this->key; }
-			void set(Object^ Key) { this->key = Key; }
 		}
 
 		PlannedEvent();
@@ -76,7 +92,5 @@ namespace EveryDay {
 		bool isDone;
 		int start;
 		int date;
-		Platform::String^ timeincard;
-		Object^ key;
 	};
 }

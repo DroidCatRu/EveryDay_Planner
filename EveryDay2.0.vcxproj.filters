@@ -41,6 +41,12 @@
     <ClCompile Include="ViewModels\TodayPageModel.cpp">
       <Filter>ViewModels</Filter>
     </ClCompile>
+    <ClCompile Include="ViewModels\WeekPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModels\SearchPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -60,6 +66,12 @@
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="ViewModels\TodayPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\WeekPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\SearchPageModel.h">
       <Filter>ViewModels</Filter>
     </ClInclude>
   </ItemGroup>
@@ -99,6 +111,15 @@
       <Filter>Views</Filter>
     </Page>
     <Page Include="Views\TodayPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\WeekPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\SearchResults.xaml">
       <Filter>Views</Filter>
     </Page>
   </ItemGroup>

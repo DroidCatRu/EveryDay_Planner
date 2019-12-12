@@ -188,15 +188,26 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="ViewModels\InboxPageModel.h" />
+    <ClInclude Include="ViewModels\SearchPageModel.h" />
     <ClInclude Include="ViewModels\TodayPageModel.h" />
+    <ClInclude Include="ViewModels\WeekPageModel.h" />
     <ClInclude Include="Views\EditEventPage.xaml.h">
       <DependentUpon>Views\EditEventPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Views\InboxPage.xaml.h">
       <DependentUpon>Views\InboxPage.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="Views\SearchResults.xaml.h">
+      <DependentUpon>Views\SearchResults.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Views\SettingsPage.xaml.h">
+      <DependentUpon>Views\SettingsPage.xaml</DependentUpon>
+    </ClInclude>
     <ClInclude Include="Views\TodayPage.xaml.h">
       <DependentUpon>Views\TodayPage.xaml</DependentUpon>
+    </ClInclude>
+    <ClInclude Include="Views\WeekPage.xaml.h">
+      <DependentUpon>Views\WeekPage.xaml</DependentUpon>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -212,7 +223,16 @@
     <Page Include="Views\InboxPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\SearchResults.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\TodayPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WeekPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -251,15 +271,26 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="ViewModels\InboxPageModel.cpp" />
+    <ClCompile Include="ViewModels\SearchPageModel.cpp" />
     <ClCompile Include="ViewModels\TodayPageModel.cpp" />
+    <ClCompile Include="ViewModels\WeekPageModel.cpp" />
     <ClCompile Include="Views\EditEventPage.xaml.cpp">
       <DependentUpon>Views\EditEventPage.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Views\InboxPage.xaml.cpp">
       <DependentUpon>Views\InboxPage.xaml</DependentUpon>
     </ClCompile>
+    <ClCompile Include="Views\SearchResults.xaml.cpp">
+      <DependentUpon>Views\SearchResults.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Views\SettingsPage.xaml.cpp">
+      <DependentUpon>Views\SettingsPage.xaml</DependentUpon>
+    </ClCompile>
     <ClCompile Include="Views\TodayPage.xaml.cpp">
       <DependentUpon>Views\TodayPage.xaml</DependentUpon>
+    </ClCompile>
+    <ClCompile Include="Views\WeekPage.xaml.cpp">
+      <DependentUpon>Views\WeekPage.xaml</DependentUpon>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

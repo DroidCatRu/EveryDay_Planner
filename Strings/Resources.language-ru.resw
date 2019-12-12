@@ -126,11 +126,53 @@
   <data name="Cancel.Content" xml:space="preserve">
     <value>Отмена</value>
   </data>
+  <data name="CancelDeletion" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="CantBeUndone" xml:space="preserve">
+    <value>Это действие не может быть отменено</value>
+  </data>
+  <data name="ClearAll.Content" xml:space="preserve">
+    <value>Сбросить ежедневник</value>
+  </data>
+  <data name="ClearAllConfirm" xml:space="preserve">
+    <value>Удалить все задачи?</value>
+  </data>
+  <data name="ClearDone.Content" xml:space="preserve">
+    <value>Удалить все выполненные</value>
+  </data>
+  <data name="ConfirmDeletion" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
   <data name="Date.Header" xml:space="preserve">
     <value>Дата</value>
   </data>
   <data name="DateNotSet" xml:space="preserve">
     <value>Укажите дату планируемого события</value>
+  </data>
+  <data name="DefPage.Header" xml:space="preserve">
+    <value>Страница по умолчанию</value>
+  </data>
+  <data name="dFriday" xml:space="preserve">
+    <value>Пятница</value>
+  </data>
+  <data name="dMonday" xml:space="preserve">
+    <value>Понедельник</value>
+  </data>
+  <data name="dSaturday" xml:space="preserve">
+    <value>Суббота</value>
+  </data>
+  <data name="dSunday" xml:space="preserve">
+    <value>Воскресенье</value>
+  </data>
+  <data name="dThursday" xml:space="preserve">
+    <value>Четверг</value>
+  </data>
+  <data name="dTuesday" xml:space="preserve">
+    <value>Вторник</value>
+  </data>
+  <data name="dWednesday" xml:space="preserve">
+    <value>Среда</value>
   </data>
   <data name="EditFlyout.Text" xml:space="preserve">
     <value>Изменить</value>
@@ -147,6 +189,45 @@
   <data name="isPlannedCheckBox.Content" xml:space="preserve">
     <value>Запланировать</value>
   </data>
+  <data name="mApril" xml:space="preserve">
+    <value>Апреля</value>
+  </data>
+  <data name="mAugust" xml:space="preserve">
+    <value>Августа</value>
+  </data>
+  <data name="mDecember" xml:space="preserve">
+    <value>Декабря</value>
+  </data>
+  <data name="mFebruary" xml:space="preserve">
+    <value>Февраля</value>
+  </data>
+  <data name="mJanuary" xml:space="preserve">
+    <value>Января</value>
+  </data>
+  <data name="mJuly" xml:space="preserve">
+    <value>Июля</value>
+  </data>
+  <data name="mJune" xml:space="preserve">
+    <value>Июня</value>
+  </data>
+  <data name="mMarch" xml:space="preserve">
+    <value>Марта</value>
+  </data>
+  <data name="mMay" xml:space="preserve">
+    <value>Мая</value>
+  </data>
+  <data name="mNovember" xml:space="preserve">
+    <value>Ноября</value>
+  </data>
+  <data name="mOctober" xml:space="preserve">
+    <value>Октября</value>
+  </data>
+  <data name="mSeptember" xml:space="preserve">
+    <value>Сентября</value>
+  </data>
+  <data name="Overdue.Text" xml:space="preserve">
+    <value>Просрочено</value>
+  </data>
   <data name="RemoveFlyout.Text" xml:space="preserve">
     <value>Удалить</value>
   </data>
@@ -155,6 +236,12 @@
   </data>
   <data name="SearchBox.PlaceholderText" xml:space="preserve">
     <value>Найти</value>
+  </data>
+  <data name="SearchPageHeader.Text" xml:space="preserve">
+    <value>Результаты поиска</value>
+  </data>
+  <data name="SettingsPageHeader.Text" xml:space="preserve">
+    <value>Параметры</value>
   </data>
   <data name="StartTime.Header" xml:space="preserve">
     <value>Время</value>
@@ -168,11 +255,23 @@
   <data name="Titler.Header" xml:space="preserve">
     <value>Название</value>
   </data>
+  <data name="Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
   <data name="TodayPageHeader.Text" xml:space="preserve">
     <value>Сегодня</value>
   </data>
   <data name="Today_Title.Content" xml:space="preserve">
     <value>Сегодня</value>
+  </data>
+  <data name="Tomorrow.Text" xml:space="preserve">
+    <value>Завтра</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Следующие 7 дней</value>
+  </data>
+  <data name="WeekPageHeader.Text" xml:space="preserve">
+    <value>Следующие 7 дней</value>
   </data>
   <data name="Week_Title.Content" xml:space="preserve">
     <value>Следующие 7 дней</value>

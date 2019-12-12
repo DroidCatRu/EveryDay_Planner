@@ -88,8 +88,8 @@
 
                         <FlyoutBase.AttachedFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Name="EditItem" x:Uid="EditFlyout" Text="Edit" Click="EditItem_Click"/>
-                                <MenuFlyoutItem Name="RemoveItem" x:Uid="RemoveFlyout" Text="Remove" Click="RemoveItem_Click"/>
+                                <MenuFlyoutItem Name="EditItem" x:Uid="EditFlyout" Text="Edit" Icon="Edit" Click="EditItem_Click"/>
+                                <MenuFlyoutItem Name="RemoveItem" x:Uid="RemoveFlyout" Text="Remove" Icon="Delete" Click="RemoveItem_Click"/>
                             </MenuFlyout>
                         </FlyoutBase.AttachedFlyout>
 

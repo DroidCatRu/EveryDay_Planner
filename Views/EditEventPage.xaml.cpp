@@ -302,5 +302,5 @@ void EveryDay::EditEventPage::CancelButton_Click(Platform::Object^ sender, Windo
 	Windows::UI::Xaml::Controls::Frame^ mainFrame = (Windows::UI::Xaml::Controls::Frame^) Window::Current->Content;
 	MainPage^ mainPage = (MainPage^)mainFrame->Content;
 
-	mainPage->NavigateToInbox(this->calendar);
+	mainPage->NavigateToDefault(this->calendar);
 }

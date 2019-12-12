@@ -30,6 +30,16 @@ namespace EveryDay {
 			void set(long long SelectedEventId) { this->selectedEventId = SelectedEventId; }
 		}
 
+		property int DefaultPage {
+			int get() { return this->defaultPage; }
+			void set(int defPage) { this->defaultPage = defPage; }
+		}
+
+		property String^ SearchPhrase {
+			String^ get() { return this->searchPhrase; }
+			void set(String^ phrase) { this->searchPhrase = phrase; }
+		}
+
 		property IObservableVector<InboxEvent^>^ InboxEvents {
 			IObservableVector<InboxEvent^>^ get() { return this->inboxEvents; }
 
@@ -76,6 +86,7 @@ namespace EveryDay {
 		void loadFromFile();
 
 		Platform::String^ getWeekDay(int yy, int mm, int dd) {
+			auto resourceLoader = Windows::ApplicationModel::Resources::ResourceLoader::GetForCurrentView();
 
 			int rst =
 				dd
@@ -88,51 +99,53 @@ namespace EveryDay {
 
 			switch (rst % 7) {
 			case 0:
-				return "Monday";
+				return resourceLoader->GetString("dMonday");
 			case 1:
-				return "Tuesday";
+				return resourceLoader->GetString("dTuesday");
 			case 2:
-				return "Wednesday";
+				return resourceLoader->GetString("dWednesday");
 			case 3:
-				return "Thursday";
+				return resourceLoader->GetString("dThursday");
 			case 4:
-				return "Friday";
+				return resourceLoader->GetString("dFriday");
 			case 5:
-				return "Saturday";
+				return resourceLoader->GetString("dSaturday");
 			case 6:
-				return "Sunday";
+				return resourceLoader->GetString("dSunday");
 			default:
 				return "ERROR";
 			}
 		}
 		Platform::String^ getMonthName(int mon) {
+			auto resourceLoader = Windows::ApplicationModel::Resources::ResourceLoader::GetForCurrentView();
+			
 			switch (mon - 1) {
 			case 0:
-				return "January";
+				return resourceLoader->GetString("mJanuary");
 			case 1:
-				return "February";
+				return resourceLoader->GetString("mFebruary");
 			case 2:
-				return "March";
+				return resourceLoader->GetString("mMarch");
 			case 3:
-				return "April";
+				return resourceLoader->GetString("mApril");
 			case 4:
-				return "May";
+				return resourceLoader->GetString("mMay");
 			case 5:
-				return "June";
+				return resourceLoader->GetString("mJune");
 			case 6:
-				return "July";
+				return resourceLoader->GetString("mJuly");
 			case 7:
-				return "August";
+				return resourceLoader->GetString("mAugust");
 			case 8:
-				return "September";
+				return resourceLoader->GetString("mSeptember");
 			case 9:
-				return "October";
+				return resourceLoader->GetString("mOctober");
 			case 10:
-				return "November";
+				return resourceLoader->GetString("mNovember");
 			case 11:
-				return "December";
+				return resourceLoader->GetString("mDecember");
 			default:
-				return "ERROR";
+				return "Undefined";
 			}
 		}
 		int getNumberOfDays(int month, int year)
@@ -157,8 +170,10 @@ namespace EveryDay {
 		Vector<PlannedEvent^>^ plannedEvents = ref new Vector<PlannedEvent^>;
 		Vector<InboxEvent^>^ inboxEvents = ref new Vector<InboxEvent^>;
 		int dateShowed = 0;
+		int defaultPage = 0;
 		StorageFile^ eventsFile;
 		long long selectedEventId = 0;
+		String^ searchPhrase;
 
 		Vector<InboxEvent^>^ sortById(Vector<InboxEvent^>^ eventsdata, int left, int right);
 	};

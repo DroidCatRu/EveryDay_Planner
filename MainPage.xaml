@@ -52,7 +52,8 @@
                 <AutoSuggestBox VerticalAlignment="Center"
                                 x:FieldModifier="public"
                                 x:Uid="SearchBox"
-                                QueryIcon="Find"/>
+                                QueryIcon="Find"
+                                QuerySubmitted="AutoSuggestBox_QuerySubmitted"/>
             </muxc:NavigationView.AutoSuggestBox>
 
             <ScrollViewer Margin="0,40,0,0"

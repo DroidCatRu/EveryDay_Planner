@@ -33,6 +33,8 @@ void Calendar::getFromStr(String^ str) {
 
 		JsonObject^ jsonCalendar = JsonObject::Parse(str);
 
+		this->defaultPage = jsonCalendar->GetNamedNumber("defaultPage");
+
 		JsonArray^ jsonInbox = jsonCalendar->GetNamedArray("inbox");
 		JsonArray^ jsonPlanned = jsonCalendar->GetNamedArray("planned");
 
@@ -82,6 +84,8 @@ void Calendar::save() {
 String^ Calendar::getJsonedStr() {
 	JsonObject^ jsonCalendar = ref new JsonObject;
 
+	JsonValue^ defPage = JsonValue::CreateNumberValue(this->defaultPage);
+
 	JsonArray^ jsonInbox = ref new JsonArray;
 	JsonArray^ jsonPlanned = ref new JsonArray;
 	
@@ -105,6 +109,7 @@ String^ Calendar::getJsonedStr() {
 		jsonPlanned->Append(ev);
 	}
 
+	jsonCalendar->Insert("defaultPage", defPage);
 	jsonCalendar->Insert("inbox", jsonInbox);
 	jsonCalendar->Insert("planned", jsonPlanned);
 

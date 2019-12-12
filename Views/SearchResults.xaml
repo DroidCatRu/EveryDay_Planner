@@ -1,35 +1,105 @@
 ﻿<Page
-    x:Class="EveryDay.TodayPage"
+    x:Class="EveryDay.SearchResults"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:EveryDay"
     xmlns:localVM="using:EveryDay.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    DataContext="{Binding Source={StaticResource TodayPageModel}}">
+    DataContext="{Binding Source={StaticResource SearchPageModel}}">
 
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <TextBlock x:Uid="TodayPageHeader"
+        <TextBlock x:Uid="SearchPageHeader"
                    Margin="0,20,0,0"
                    FontSize="20"
                    LineHeight="25"
                    FontFamily="ms-appx:Assets/Roboto-Medium.ttf#Roboto"
                    Foreground="{ThemeResource SystemBaseHighColor}"/>
 
-        <TextBlock x:Uid="Overdue"
-                   Margin="0,16,0,0"
-                   FontSize="14"
-                   FontFamily="ms-appx:Assets/Roboto-Bold.ttf#Roboto"
-                   Foreground="Red"
-                   Visibility="{Binding HasOverdue}"/>
+        <ListView x:Name="Inbox"
+                  ItemsSource="{Binding InboxEvents, Mode=TwoWay}"
+                  Margin="0,16,0,0"
+                  HorizontalAlignment="Stretch"
+                  SelectionMode="None"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                  ScrollViewer.IsVerticalScrollChainingEnabled="True"
+                  ScrollViewer.IsScrollInertiaEnabled="False"
+                  ScrollViewer.IsZoomInertiaEnabled="False"
+                  ScrollViewer.VerticalScrollMode="Disabled">
 
-        <ListView x:Name="Overdue"
-                  ItemsSource="{Binding OverdueEvents, Mode=TwoWay}"
-                  Visibility="{Binding HasOverdue}"
-                  Margin="0,6,0,0"
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment"  Value="Stretch"/>
+                    <Setter Property="Padding" Value="0,0,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:InboxEvent">
+
+                    <RelativePanel HorizontalAlignment="Stretch"
+                                   Height="48"
+                                   RightTapped="Item_Tapped"
+                                   Background="Transparent">
+
+                        <Rectangle Fill="{ThemeResource SystemChromeLowColor}"
+                                   Height="1"
+                                   RelativePanel.AlignRightWithPanel="True"
+                                   RelativePanel.AlignLeftWithPanel="True"
+                                   RelativePanel.AlignTopWithPanel="True"/>
+
+                        <Grid RelativePanel.AlignRightWithPanel="True"
+                              RelativePanel.AlignLeftWithPanel="True"
+                              Height="48">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="32"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox HorizontalAlignment="Left"
+                                      VerticalAlignment="Center"
+                                      IsChecked="{x:Bind IsDone, Mode=OneWay}"
+                                      Checked="Inbox_CheckBox_Checked"
+                                      Unchecked="Inbox_CheckBox_Unchecked"
+                                      Grid.Column="0"/>
+
+                            <StackPanel Grid.Column="1"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="{x:Bind Title, Mode=OneWay}"
+                                           HorizontalAlignment="Left"
+                                           FontSize="14"
+                                           FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
+                                           Foreground="{ThemeResource SystemBaseHighColor}"
+                                           TextDecorations="Strikethrough"
+                                           Visibility="{x:Bind IsDone, Mode=OneWay}"/>
+
+                                <TextBlock Text="{x:Bind Title, Mode=OneWay}"
+                                           HorizontalAlignment="Left"
+                                           FontSize="14"
+                                           FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
+                                           Foreground="{ThemeResource SystemBaseHighColor}"
+                                           Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <FlyoutBase.AttachedFlyout>
+                            <MenuFlyout>
+                                <MenuFlyoutItem Name="EditItem" x:Uid="EditFlyout" Text="Edit" Icon="Edit" Click="Inbox_EditItem_Click"/>
+                                <MenuFlyoutItem Name="RemoveItem" x:Uid="RemoveFlyout" Text="Remove" Icon="Delete" Click="Inbox_RemoveItem_Click"/>
+                            </MenuFlyout>
+                        </FlyoutBase.AttachedFlyout>
+
+                    </RelativePanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView x:Name="Planned"
+                  ItemsSource="{Binding PlannedEvents, Mode=TwoWay}"
                   HorizontalAlignment="Stretch"
                   SelectionMode="None"
                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
@@ -70,8 +140,8 @@
                             <CheckBox HorizontalAlignment="Left"
                                       VerticalAlignment="Center"
                                       IsChecked="{x:Bind IsDone, Mode=OneWay}"
-                                      Checked="CheckBox_Checked"
-                                      Unchecked="CheckBox_Unchecked"
+                                      Checked="Planned_CheckBox_Checked"
+                                      Unchecked="Planned_CheckBox_Unchecked"
                                       Grid.Column="0"/>
 
                             <StackPanel Grid.Column="1"
@@ -99,123 +169,6 @@
                                                FontSize="12"
                                                VerticalAlignment="Bottom"
                                                FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                               Foreground="Red"
-                                               Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind TimeToShow, Mode=OneWay}"
-                                               FontSize="12"
-                                               Margin="4,0,0,0"
-                                               VerticalAlignment="Bottom"
-                                               FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                               Foreground="Red"
-                                               Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-
-                        <FlyoutBase.AttachedFlyout>
-                            <MenuFlyout>
-                                <MenuFlyoutItem Name="EditItem" x:Uid="EditFlyout" Text="Edit" Icon="Edit" Click="EditItem_Click"/>
-                                <MenuFlyoutItem Name="RemoveItem" x:Uid="RemoveFlyout" Text="Remove" Icon="Delete" Click="RemoveItem_Click"/>
-                            </MenuFlyout>
-                        </FlyoutBase.AttachedFlyout>
-
-                    </RelativePanel>
-
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <StackPanel Orientation="Horizontal"
-                    Margin="0,16,0,0"
-                    HorizontalAlignment="Left">
-
-            <TextBlock x:Uid="TodayPageHeader"
-                       FontSize="14"
-                       FontFamily="ms-appx:Assets/Roboto-Bold.ttf#Roboto"
-                       VerticalAlignment="Bottom"
-                       Foreground="{ThemeResource SystemBaseHighColor}"/>
-
-            <TextBlock Text="{Binding TodayString}"
-                       FontSize="12"
-                       VerticalAlignment="Bottom"
-                       Margin="8,0,0,0"
-                       FontFamily="ms-appx:Assets/Roboto-Medium.ttf#Roboto"
-                       Foreground="{ThemeResource SystemBaseMediumColor}"/>
-
-        </StackPanel>
-
-        <ListView x:Name="Events"
-                  ItemsSource="{Binding TodayEvents, Mode=TwoWay}"
-                  Margin="0,6,0,0"
-                  HorizontalAlignment="Stretch"
-                  SelectionMode="None"
-                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                  ScrollViewer.IsVerticalScrollChainingEnabled="True"
-                  ScrollViewer.IsScrollInertiaEnabled="False"
-                  ScrollViewer.IsZoomInertiaEnabled="False"
-                  ScrollViewer.VerticalScrollMode="Disabled">
-
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment"  Value="Stretch"/>
-                    <Setter Property="Padding" Value="0,0,0,0"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:PlannedEvent">
-
-                    <RelativePanel HorizontalAlignment="Stretch"
-                                   Height="56"
-                                   RightTapped="Item_Tapped"
-                                   Background="Transparent">
-
-                        <Rectangle Fill="{ThemeResource SystemChromeLowColor}"
-                                   Height="1"
-                                   RelativePanel.AlignRightWithPanel="True"
-                                   RelativePanel.AlignLeftWithPanel="True"
-                                   RelativePanel.AlignTopWithPanel="True"/>
-
-                        <Grid RelativePanel.AlignRightWithPanel="True"
-                              RelativePanel.AlignLeftWithPanel="True"
-                              Height="56">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="32"/>
-                                <ColumnDefinition Width="1*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <CheckBox HorizontalAlignment="Left"
-                                      VerticalAlignment="Center"
-                                      IsChecked="{x:Bind IsDone, Mode=OneWay}"
-                                      Checked="CheckBox_Checked"
-                                      Unchecked="CheckBox_Unchecked"
-                                      Grid.Column="0"/>
-
-                            <StackPanel Grid.Column="1"
-                                        HorizontalAlignment="Left"
-                                        VerticalAlignment="Center">
-                                <TextBlock Text="{x:Bind Title, Mode=OneWay}"
-                                           HorizontalAlignment="Left"
-                                           FontSize="14"
-                                           FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                           Foreground="{ThemeResource SystemBaseHighColor}"
-                                           TextDecorations="Strikethrough"
-                                           Visibility="{x:Bind IsDone, Mode=OneWay}"/>
-
-                                <TextBlock Text="{x:Bind Title, Mode=OneWay}"
-                                           HorizontalAlignment="Left"
-                                           FontSize="14"
-                                           FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                           Foreground="{ThemeResource SystemBaseHighColor}"
-                                           Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
-
-                                <StackPanel Orientation="Horizontal"
-                                            Margin="0,2,0,0"
-                                            HorizontalAlignment="Left">
-                                    <TextBlock x:Uid="TodayPageHeader"
-                                               FontSize="12"
-                                               VerticalAlignment="Bottom"
-                                               FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
                                                Foreground="{ThemeResource SystemBaseMediumColor}"
                                                Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
                                     <TextBlock Text="{x:Bind TimeToShow, Mode=OneWay}"
@@ -231,8 +184,8 @@
 
                         <FlyoutBase.AttachedFlyout>
                             <MenuFlyout>
-                                <MenuFlyoutItem Name="EditItem" x:Uid="EditFlyout" Text="Edit" Icon="Edit" Click="EditItem_Click"/>
-                                <MenuFlyoutItem Name="RemoveItem" x:Uid="RemoveFlyout" Text="Remove" Icon="Delete" Click="RemoveItem_Click"/>
+                                <MenuFlyoutItem Name="EditItem" x:Uid="EditFlyout" Text="Edit" Icon="Edit" Click="Planned_EditItem_Click"/>
+                                <MenuFlyoutItem Name="RemoveItem" x:Uid="RemoveFlyout" Text="Remove" Icon="Delete" Click="Planned_RemoveItem_Click"/>
                             </MenuFlyout>
                         </FlyoutBase.AttachedFlyout>
 
