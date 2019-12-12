@@ -294,6 +294,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="EveryDay2.0_TemporaryKey.pfx" />
     <None Include="packages.config" />
   </ItemGroup>

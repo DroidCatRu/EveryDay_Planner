@@ -6,10 +6,6 @@
 
 namespace EveryDay {
 	
-	/// <summary>
-	/// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-	/// </summary>
-	
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class EditEventPage sealed {
 

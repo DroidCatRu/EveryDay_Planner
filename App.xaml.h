@@ -2,13 +2,10 @@
 
 #include "App.g.h"
 
-namespace EveryDay
-{
-	/// <summary>
-	/// Обеспечивает зависящее от конкретного приложения поведение, дополняющее класс Application по умолчанию.
-	/// </summary>
-	ref class App sealed
-	{
+namespace EveryDay {
+	
+	ref class App sealed {
+
 	protected:
 		virtual void OnLaunched(Windows::ApplicationModel::Activation::LaunchActivatedEventArgs^ e) override;
 

@@ -20,11 +20,6 @@ namespace EveryDay {
 	public:
 		Calendar() {}
 
-		property int DateShowed {
-			int get() { return this->dateShowed; }
-			void set(int DateShowed) { this->dateShowed = DateShowed; }
-		}
-
 		property long long SelectedEventId {
 			long long get() { return this->selectedEventId; }
 			void set(long long SelectedEventId) { this->selectedEventId = SelectedEventId; }

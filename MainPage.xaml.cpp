@@ -57,14 +57,6 @@ void MainPage::NavView_Loaded() {
 				this->calendar->getFromStr(str);
 			}).then([this]() mutable -> void {
 
-				std::time_t t = std::time(0);
-				std::tm now;
-				localtime_s(&now, &t);
-				int yearToShow = now.tm_year + 1900;
-				int monthToShow = now.tm_mon + 1;
-				int dayToShow = now.tm_mday;
-				this->calendar->DateShowed = yearToShow * 10000 + monthToShow * 100 + dayToShow;
-
 				switch (this->calendar->DefaultPage) {
 				case 0:
 					ContentFrame->Navigate(InboxPage::typeid, this->calendar);
@@ -175,8 +167,6 @@ void MainPage::NavigateToDefault(Calendar^ cal) {
 }
 
 void EveryDay::MainPage::AutoSuggestBox_QuerySubmitted(Windows::UI::Xaml::Controls::AutoSuggestBox^ sender, Windows::UI::Xaml::Controls::AutoSuggestBoxQuerySubmittedEventArgs^ args) {
-	if (this->calendar->SearchPhrase != args->QueryText) {
-		this->calendar->SearchPhrase = args->QueryText;
-		NavigateToSearch(this->calendar);
-	}
+	this->calendar->SearchPhrase = args->QueryText;
+	NavigateToSearch(this->calendar);
 }

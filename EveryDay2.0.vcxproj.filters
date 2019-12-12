@@ -126,6 +126,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="EveryDay2.0_TemporaryKey.pfx" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="Strings\Resources.language-en.resw">
