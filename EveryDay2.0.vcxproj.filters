@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Common">
+      <UniqueIdentifier>bc0d12a8-7558-4c8b-a0a5-2d6899db2957</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>74f07df9-0e43-4eb7-a048-9535fdd37dd1</UniqueIdentifier>
+      <Extensions>bmp;fbx;gif;jpg;jpeg;tga;tiff;tif;png</Extensions>
+    </Filter>
+    <Filter Include="Strings">
+      <UniqueIdentifier>{5833fd43-6593-4f70-a6e6-24685012d34e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{81ad3f90-c6be-4f43-a58d-5593c2d36c37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{ecd88651-4bc1-42ee-b837-0a7950f742d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModels">
+      <UniqueIdentifier>{692005e2-3e16-454a-b054-d33782dd4270}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Helpers\Calendar.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\InboxEvent.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\PlannedEvent.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModels\InboxPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModels\TodayPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModels\WeekPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewModels\SearchPageModel.cpp">
+      <Filter>ViewModels</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Helpers\Calendar.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\InboxEvent.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\PlannedEvent.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\InboxPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\BindableBase.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\TodayPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\WeekPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewModels\SearchPageModel.h">
+      <Filter>ViewModels</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainPage.xaml" />
+    <Page Include="$(MSBuildThisFileDirectory)DensityStyles\Compact.xaml" />
+    <Page Include="Views\InboxPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\EditEventPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\TodayPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\WeekPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <Filter>Views</Filter>
+    </Page>
+    <Page Include="Views\SearchResults.xaml">
+      <Filter>Views</Filter>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="EveryDay2.0_TemporaryKey.pfx" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="Strings\Resources.language-en.resw">
+      <Filter>Strings</Filter>
+    </PRIResource>
+    <PRIResource Include="Strings\Resources.language-ru.resw">
+      <Filter>Strings</Filter>
+    </PRIResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\Roboto-Black.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-BlackItalic.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-Bold.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-BoldItalic.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-Italic.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-Light.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-LightItalic.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-Medium.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-MediumItalic.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-Regular.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-Thin.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+    <Font Include="Assets\Roboto-ThinItalic.ttf">
+      <Filter>Assets</Filter>
+    </Font>
+  </ItemGroup>
+</Project>

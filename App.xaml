@@ -1,0 +1,59 @@
+﻿<Application
+    x:Class="EveryDay.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EveryDay"
+    xmlns:localVM="using:EveryDay.ViewModels">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <ResourceDictionary>
+                    <ResourceDictionary.ThemeDictionaries>
+                        <ResourceDictionary x:Key="Light">
+                            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                                   BackgroundSource="Backdrop"
+                                   TintColor="{ThemeResource SystemChromeMediumColor}"
+                                   FallbackColor="{ThemeResource SystemChromeMediumColor}"
+                                   TintOpacity=".7"/>
+                            <AcrylicBrush x:Key="NavigationViewTopPaneBackground"
+                                   BackgroundSource="Backdrop"
+                                   TintColor="{ThemeResource SystemChromeMediumColor}"
+                                   FallbackColor="{ThemeResource SystemChromeMediumColor}"
+                                   TintOpacity=".7"/>
+                            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
+                                   BackgroundSource="HostBackdrop"
+                                   TintColor="{ThemeResource SystemChromeMediumColor}"
+                                   FallbackColor="{ThemeResource SystemChromeMediumColor}"
+                                   TintOpacity=".7"/>
+                        </ResourceDictionary>
+                        <ResourceDictionary x:Key="Dark">
+                            <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
+                                   BackgroundSource="Backdrop"
+                                   TintColor="{ThemeResource SystemChromeMediumColor}"
+                                   FallbackColor="{ThemeResource SystemChromeMediumColor}"
+                                   TintOpacity=".7"/>
+                            <AcrylicBrush x:Key="NavigationViewTopPaneBackground"
+                                   BackgroundSource="Backdrop"
+                                   TintColor="{ThemeResource SystemChromeMediumColor}"
+                                   FallbackColor="{ThemeResource SystemChromeMediumColor}"
+                                   TintOpacity=".7"/>
+                            <AcrylicBrush x:Key="NavigationViewExpandedPaneBackground"
+                                   BackgroundSource="HostBackdrop"
+                                   TintColor="{ThemeResource SystemChromeMediumColor}"
+                                   FallbackColor="{ThemeResource SystemChromeMediumColor}"
+                                   TintOpacity=".7"/>
+                        </ResourceDictionary>
+                    </ResourceDictionary.ThemeDictionaries>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+
+            <localVM:InboxPageModel x:Key="InboxPageModel" />
+            <localVM:TodayPageModel x:Key="TodayPageModel" />
+            <localVM:WeekPageModel x:Key="WeekPageModel" />
+            <localVM:SearchPageModel x:Key="SearchPageModel" />
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

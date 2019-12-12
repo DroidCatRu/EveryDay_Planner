@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="EveryDay::BindableBase">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\BindableBase.h</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EveryDay::Calendar">
+    <Position X="3" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAg4BAAAAASDIAAAASBACAA4ACgAAAgEgAAaAEBoAgA=</HashCode>
+      <FileName>Helpers\Calendar.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::InboxEvent">
+    <Position X="8.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACACCAQAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Helpers\InboxEvent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::PlannedEvent">
+    <Position X="11.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACACAAQCAAEEAgAAAAAAAAAAAAAAABAAEAAQEAAgA=</HashCode>
+      <FileName>Helpers\PlannedEvent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::EditEventPage">
+    <Position X="17" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAgAIABAAAUEAAAAAAAIYCAAQAgCQAIAAQBoAAAAA=</HashCode>
+      <FileName>Views\EditEventPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::InboxPage">
+    <Position X="4.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAUAAEAAAACIYCAoAAAAAAAEAQAIAAAAA=</HashCode>
+      <FileName>Views\InboxPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::SearchResults">
+    <Position X="6.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAIAgAACAAAAQABIAAEAQIQCAAICAAAABEAQAIQAAAA=</HashCode>
+      <FileName>Views\SearchResults.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::SettingsPage">
+    <Position X="15.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAoAAACAAAYAAAAEAgAIQCAAQACIAAAAARAIAAAAA=</HashCode>
+      <FileName>Views\SettingsPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::TodayPage">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAUAAAAAABCIYCAoAAAAAAAEAQAIAIAAA=</HashCode>
+      <FileName>Views\TodayPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::WeekPage">
+    <Position X="15.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAAAwAAAAgIAUAAAAAAADIYCAIAAAAACAEAQAIIAgAA=</HashCode>
+      <FileName>Views\WeekPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::App">
+    <Position X="15.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAgAAAAAAAAAAAAAEAEAAGAAAAAAAAQAAAQAAoAAA=</HashCode>
+      <FileName>App.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::MainPage">
+    <Position X="17" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAiCAAQAAAQAAACAAgEIACAIYAJAAAQAEQQIAAEAA=</HashCode>
+      <FileName>MainPage.xaml.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::ViewModels::InboxPageModel">
+    <Position X="4.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAgABAAAAASAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\InboxPageModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::ViewModels::SearchPageModel">
+    <Position X="6.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgABAAAAASAAAAAAAAACIAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SearchPageModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::ViewModels::TodayPageModel">
+    <Position X="10" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAgAAASAACAAABEAAAAAgAQAAQAACAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\TodayPageModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EveryDay::ViewModels::WeekPageModel">
+    <Position X="13.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgQAEoAACSAAAQAAEEABCAEoAaAIQQACBAEAAABAIA=</HashCode>
+      <FileName>ViewModels\WeekPageModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

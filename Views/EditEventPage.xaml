@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="EveryDay.EditEventPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EveryDay"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Padding="0,20,0,0"
+          VerticalAlignment="Stretch">
+
+        <StackPanel Width="auto"
+                    HorizontalAlignment="Center">
+
+            <TextBox x:Uid="Titler"
+                     x:Name="Titler"
+                     Width="360"/>
+
+            <CheckBox x:Uid="isPlannedCheckBox"
+                      x:Name="isPlannedCheckBox"
+                      Margin="0,16,0,0"
+                      HorizontalAlignment="Left"
+                      Checked="CheckBox_Checked"
+                      Unchecked="CheckBox_Unchecked"/>
+
+            <StackPanel Width="auto"
+                        Visibility="Collapsed"
+                        x:Name="DatePlan">
+                <TimePicker Header="Time"
+                            x:Uid="StartTime"
+                            x:Name="Starter"
+                            Width="360"
+                            Margin="0,16,0,0"
+                            HorizontalAlignment="Center"/>
+
+                <CalendarDatePicker Header="Date"
+                                    x:Uid="Date"
+                                    x:Name="Dater"
+                                    Width="360"
+                                    Margin="0,16,0,0"
+                                    HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <Grid Margin="0,16,0,0"
+                      Width="360"
+                      HorizontalAlignment="Center"
+                      ColumnSpacing="8">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Uid="Cancel"
+                        Content="Cancel"
+                        Grid.Column="0"
+                        HorizontalAlignment="Stretch"
+                        Click="CancelButton_Click"
+                        x:Name="CancelButton"/>
+                <Button Content="Add event"
+                        Grid.Column="1"
+                        HorizontalAlignment="Stretch"
+                        Click="AddButton_Click"
+                        x:Name="AddButton"/>
+            </Grid>
+
+            <TextBlock x:Name="AlertMessage"
+                       HorizontalAlignment="Center"
+                       FontSize="14"
+                       FontFamily="../Assets/Roboto-Light.ttf#Roboto"
+                       Width="360"
+                       Height="Auto"
+                       Margin="0,16,0,0"
+                       TextAlignment="Center"
+                       Foreground="{ThemeResource SystemErrorTextColor}"/>
+
+        </StackPanel>
+    </Grid>
+</Page>
