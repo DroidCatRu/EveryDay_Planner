@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource SearchPageModel}}">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
 
         <TextBlock x:Uid="SearchPageHeader"
                    Margin="0,20,0,0"

@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource TodayPageModel}}">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
 
         <TextBlock x:Uid="TodayPageHeader"
                    Margin="0,20,0,0"
@@ -23,7 +23,7 @@
                    Margin="0,16,0,0"
                    FontSize="14"
                    FontFamily="ms-appx:Assets/Roboto-Bold.ttf#Roboto"
-                   Foreground="Red"
+                   Foreground="{ThemeResource OverdueColor}"
                    Visibility="{Binding HasOverdue}"/>
 
         <ListView x:Name="Overdue"
@@ -53,7 +53,7 @@
                                    RightTapped="Item_Tapped"
                                    Background="Transparent">
 
-                        <Rectangle Fill="{ThemeResource SystemChromeLowColor}"
+                        <Rectangle Fill="{ThemeResource ListDivider}"
                                    Height="1"
                                    RelativePanel.AlignRightWithPanel="True"
                                    RelativePanel.AlignLeftWithPanel="True"
@@ -99,14 +99,14 @@
                                                FontSize="12"
                                                VerticalAlignment="Bottom"
                                                FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                               Foreground="Red"
+                                               Foreground="{ThemeResource OverdueColor}"
                                                Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
                                     <TextBlock Text="{x:Bind TimeToShow, Mode=OneWay}"
                                                FontSize="12"
                                                Margin="4,0,0,0"
                                                VerticalAlignment="Bottom"
                                                FontFamily="ms-appx:Assets/Roboto-Regular.ttf#Roboto"
-                                               Foreground="Red"
+                                               Foreground="{ThemeResource OverdueColor}"
                                                Visibility="{x:Bind IsVisible, Mode=OneWay}"/>
                                 </StackPanel>
                             </StackPanel>
@@ -170,7 +170,7 @@
                                    RightTapped="Item_Tapped"
                                    Background="Transparent">
 
-                        <Rectangle Fill="{ThemeResource SystemChromeLowColor}"
+                        <Rectangle Fill="{ThemeResource ListDivider}"
                                    Height="1"
                                    RelativePanel.AlignRightWithPanel="True"
                                    RelativePanel.AlignLeftWithPanel="True"

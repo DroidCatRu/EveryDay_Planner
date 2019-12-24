@@ -27,6 +27,12 @@
                                    TintColor="{ThemeResource SystemChromeMediumColor}"
                                    FallbackColor="{ThemeResource SystemChromeMediumColor}"
                                    TintOpacity=".7"/>
+                            <SolidColorBrush x:Key="OverdueColor"
+                                             Color="#D1453B"/>
+                            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush"
+                                             Color="#FFFFFF"/>
+                            <SolidColorBrush x:Key="ListDivider"
+                                             Color="#EEEEEE"/>
                         </ResourceDictionary>
                         <ResourceDictionary x:Key="Dark">
                             <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground"
@@ -44,6 +50,12 @@
                                    TintColor="{ThemeResource SystemChromeMediumColor}"
                                    FallbackColor="{ThemeResource SystemChromeMediumColor}"
                                    TintOpacity=".7"/>
+                            <SolidColorBrush x:Key="OverdueColor"
+                                             Color="#FF7066"/>
+                            <SolidColorBrush x:Key="ApplicationPageBackgroundThemeBrush"
+                                             Color="#1F1F1F"/>
+                            <SolidColorBrush x:Key="ListDivider"
+                                             Color="#353535"/>
                         </ResourceDictionary>
                     </ResourceDictionary.ThemeDictionaries>
                 </ResourceDictionary>

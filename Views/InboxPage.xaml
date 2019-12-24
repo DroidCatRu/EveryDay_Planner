@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource InboxPageModel}}">
 
-    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel>
 
         <TextBlock x:Uid="InboxPageHeader"
                    Margin="0,20,0,0"
@@ -45,7 +45,7 @@
                                    RightTapped="Item_Tapped"
                                    Background="Transparent">
 
-                        <Rectangle Fill="{ThemeResource SystemChromeLowColor}"
+                        <Rectangle Fill="{ThemeResource ListDivider}"
                                    Height="1"
                                    RelativePanel.AlignRightWithPanel="True"
                                    RelativePanel.AlignLeftWithPanel="True"
