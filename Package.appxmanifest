@@ -9,7 +9,7 @@
   <Identity
     Name="EveryDay"
     Publisher="CN=DroidCatRu"
-    Version="1.0.1.0" />
+    Version="2.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="7022e855-9dff-4b08-93dd-546afd2dfb05" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
