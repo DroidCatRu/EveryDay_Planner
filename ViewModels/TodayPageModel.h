@@ -45,7 +45,7 @@ namespace EveryDay {
 					std::time_t t = std::time(0);
 					std::tm now;
 					localtime_s(&now, &t);
-					return now.tm_mday + L" " + this->calendar->getMonthName(12);
+					return now.tm_mday + L" " + this->calendar->getMonthName(now.tm_mon+1);
 				}
 			}
 
